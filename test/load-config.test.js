@@ -9,7 +9,7 @@ suite('load-config', function() {
 
     var gruntOptions;
     setup(function() {
-      gruntOptions = loadConfig(grunt, { init: false });
+      gruntOptions = loadConfig(grunt, { init: false, config: { debug: true } });
     });
 
     test('read ', function() {
@@ -33,6 +33,14 @@ suite('load-config', function() {
       assert.ok(gruntOptions.env.USER);
 
     });
+
+    test('config', function() {
+
+      assert.equal(typeof gruntOptions.debug, 'boolean');
+      assert.ok(gruntOptions.debug);
+
+    });
+
 
   });
 

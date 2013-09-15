@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "glob": "~3.2.6",
-    "js-yaml": "~2.1.0"
+    "js-yaml": "~2.1.0",
+    "load-grunt-tasks": "~0.1.0"
   }
 }

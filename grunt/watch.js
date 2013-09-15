@@ -1,7 +1,8 @@
 module.exports = {
   all: {
     files: [
-      '<%= jshint.all %>'
+      '<%= jshint.all %>',
+      'grunt/*.yaml'
     ],
     tasks: [
       'default'

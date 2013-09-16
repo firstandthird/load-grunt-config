@@ -1,6 +1,6 @@
 {
   "name": "load-grunt-config",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Grunt plugin that lets you break up your Gruntfile config by task",
   "main": "lib/load-config.js",
   "scripts": {

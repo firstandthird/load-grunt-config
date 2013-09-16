@@ -1,5 +1,5 @@
 {
-  "name": "grunt-load-config",
+  "name": "load-grunt-config",
   "version": "0.2.1",
   "description": "Grunt plugin that lets you break up your Gruntfile config by task",
   "main": "lib/load-config.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/firstandthird/grunt-load-config.git"
+    "url": "git://github.com/firstandthird/load-grunt-config.git"
   },
   "keywords": [
     "gruntplugin"
@@ -16,7 +16,7 @@
   "author": "First + Third",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/firstandthird/grunt-load-config/issues"
+    "url": "https://github.com/firstandthird/load-grunt-config/issues"
   },
   "devDependencies": {
     "grunt-simple-mocha": "~0.4.0",

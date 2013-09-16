@@ -23,7 +23,7 @@ suite('load-config', function() {
     test('package.json', function() {
 
       assert.ok(gruntOptions.package);
-      assert.equal(gruntOptions.package.name, 'grunt-load-config');
+      assert.equal(gruntOptions.package.name, 'load-grunt-config');
 
     });
 

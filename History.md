@@ -1,4 +1,9 @@
 
+0.3.1 / 2013-09-17 
+==================
+
+  * removed env option so it doesn't conflict with grunt-env.  fixes #6
+
 0.3.0 / 2013-09-16 
 ==================
 

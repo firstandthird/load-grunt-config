@@ -6,7 +6,7 @@ Grunt plugin that lets you break up your Gruntfile config by task.  For most pro
 
 - Each task has it's own config file. Example: jshint.js, mocha.js, etc.
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks).
-- Auto expose package.json (<%= package.name %>) options and environment vars (<%= env.USER %>).
+- Auto expose package.json (<%= package.name %>) options.
 - Support for YAML files
 
 ##Installation

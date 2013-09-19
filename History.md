@@ -1,4 +1,10 @@
 
+0.4.0 / 2013-09-19 
+==================
+
+  * updated readme for load-grunt-tasks option passing. #7
+  * ability to pass options to load-grunt-tasks.  fixes #7
+
 0.3.1 / 2013-09-17 
 ==================
 

@@ -27,19 +27,14 @@ suite('load-config', function() {
 
     });
 
-    test('env', function() {
-
-      assert.ok(gruntOptions.env);
-      assert.ok(gruntOptions.env.USER);
-
-    });
-
     test('config', function() {
 
       assert.equal(typeof gruntOptions.debug, 'boolean');
       assert.ok(gruntOptions.debug);
 
     });
+
+    test('load-grunt-tasks');
 
 
   });

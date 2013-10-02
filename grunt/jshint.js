@@ -1,8 +1,10 @@
-module.exports = {
-  all: [
-    'Gruntfile.js',
-    'grunt/*.js',
-    'lib/*.js',
-    'test/*.js'
-  ]
+module.exports = function (grunt) {
+  return {
+    all: [
+      'Gruntfile.js',
+      'grunt/*.js',
+      'lib/*.js',
+      'test/*.js'
+    ]
+  };
 };

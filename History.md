@@ -1,4 +1,10 @@
 
+0.5.0 / 2013-10-02 
+==================
+
+  * Adding a test for functions that return options [cbas]
+  * Pass grunt reference to function options [cbas]
+
 0.4.1 / 2013-09-19 
 ==================
 

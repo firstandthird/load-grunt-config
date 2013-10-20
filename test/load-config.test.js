@@ -17,6 +17,8 @@ suite('load-config', function() {
       assert.ok(gruntOptions.jshint);
       assert.ok(gruntOptions.simplemocha);
       assert.ok(gruntOptions.watch);
+      assert.ok(gruntOptions.notify);
+      assert.ok(gruntOptions.coffee);
 
     });
 

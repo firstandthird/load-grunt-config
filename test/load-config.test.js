@@ -20,6 +20,13 @@ suite('load-config', function() {
 
     });
 
+    test('grunt context passing ', function() {
+
+      assert.notEqual(typeof gruntOptions.jshint, 'function');
+      assert.ok(gruntOptions.jshint.all);
+
+    });
+
     test('package.json', function() {
 
       assert.ok(gruntOptions.package);

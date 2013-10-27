@@ -1,4 +1,12 @@
 
+0.6.0 / 2013-10-27 
+==================
+
+  * bumped load-grunt-tasks dep.  Fixes #10
+  * configPath is now absolute.  Fixes #11
+  * Feature: enabled coffee-script support for config files
+  * updated readme
+
 0.5.0 / 2013-10-02 
 ==================
 

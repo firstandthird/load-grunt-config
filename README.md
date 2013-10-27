@@ -8,6 +8,7 @@ Grunt plugin that lets you break up your Gruntfile config by task.  For most pro
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks).
 - Auto expose package.json (<%= package.name %>) options.
 - Support for YAML files
+- Support for coffee files
 
 ##Installation
 
@@ -60,4 +61,11 @@ grunt/notify.yaml
 default:
   options:
     message: 'Default finished'
+```
+
+grunt/task.coffee
+```coffee
+module.exports =
+  options:
+    bare: true
 ```

@@ -31,7 +31,7 @@ Gruntfile.js with options
 module.exports = function(grunt) {
 
 	require('load-grunt-config')(grunt, {
-		configPath: 'grunt', //path to task.js files
+		configPath: path.join(process.cwd(), 'grunt'), //path to task.js files, defaults to grunt dir
 		init: true, //auto grunt.initConfig
 		config: { //additional config vars
 			test: false

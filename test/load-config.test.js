@@ -9,7 +9,7 @@ suite('load-config', function() {
 
     var gruntOptions;
     setup(function() {
-      gruntOptions = loadConfig(grunt, { init: false, config: { debug: true } });
+      gruntOptions = loadConfig(grunt, { init: false, config: { debug: true, jshint: {} } });
     });
 
     test('read ', function() {
@@ -40,6 +40,7 @@ suite('load-config', function() {
 
       assert.equal(typeof gruntOptions.debug, 'boolean');
       assert.ok(gruntOptions.debug);
+      assert.ok(gruntOptions.jshint.all);
 
     });
 

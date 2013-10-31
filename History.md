@@ -1,4 +1,11 @@
 
+0.6.1 / 2013-10-31 
+==================
+
+  * use merge so empty objects don't kill settings [dylang]
+  * updated readme to add coffee support
+  * updated readme
+
 0.6.0 / 2013-10-27 
 ==================
 

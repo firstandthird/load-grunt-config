@@ -1,4 +1,9 @@
 
+0.7.0 / 2013-11-11 
+==================
+
+  * added support for aliases file to easily register task aliases.  fixes #5
+
 0.6.1 / 2013-10-31 
 ==================
 

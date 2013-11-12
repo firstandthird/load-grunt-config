@@ -9,6 +9,7 @@ Grunt plugin that lets you break up your Gruntfile config by task.  For most pro
 - Auto expose package.json (<%= package.name %>) options.
 - Support for YAML files
 - Support for coffee files
+- Easily register task aliases with aliases.yaml
 
 ##Installation
 
@@ -21,8 +22,6 @@ Basic Gruntfile.js
 module.exports = function(grunt) {
 
 	require('load-grunt-config')(grunt);
-
-	grunt.registerTask('default', ['jshint', 'mocha', 'notify']);
 
 };
 ```
@@ -43,8 +42,6 @@ module.exports = function(grunt) {
 			scope: 'devDependencies'
 		}
 	});
-
-	grunt.registerTask('default', ['jshint', 'mocha']);
 
 };
 ```
@@ -68,4 +65,12 @@ grunt/task.coffee
 module.exports =
   options:
     bare: true
+```
+
+grunt/aliases.yaml
+```yaml
+default:
+	- 'jshint'
+	- 'mocha'
+	- 'notify'
 ```

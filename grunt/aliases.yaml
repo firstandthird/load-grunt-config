@@ -1,0 +1,6 @@
+test:
+  - 'simplemocha'
+default:
+  - 'jshint'
+  - 'test'
+  - 'notify'

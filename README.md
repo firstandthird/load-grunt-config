@@ -6,10 +6,10 @@ Grunt plugin that lets you break up your Gruntfile config by task.  For most pro
 
 - Each task has it's own config file. Example: jshint.js, mocha.js, etc.
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks).
-- Auto expose package.json (<%= package.name %>) options.
-- Support for YAML files
-- Support for coffee files
-- Easily register task aliases with aliases.yaml
+- Auto expose package.json (<%= package.name %>).
+- Support for YAML files.
+- Support for coffee files.
+- Easily register task aliases with aliases.yaml.
 
 ##Installation
 
@@ -46,6 +46,8 @@ module.exports = function(grunt) {
 };
 ```
 
+Here's what the files in your `grunt/` folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer.
+
 grunt/jshint.js
 ```javascript
 module.exports = {
@@ -67,7 +69,7 @@ module.exports =
     bare: true
 ```
 
-grunt/aliases.yaml
+grunt/aliases.yaml - lets you define aliases (like `grunt.registerTask('default', ['jshint']);`)
 ```yaml
 default:
 	- 'jshint'

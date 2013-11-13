@@ -2,16 +2,34 @@
 <html lang="en">
   <meta charset="utf-8" />
   <head>
-    <title></title>
+    <title>load-grunt-config - Modularize your Gruntfile</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="public/common.css"/>
+    
+      <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24017782-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+      </script>
     
   </head>
   <body>
     <div id="toc"></div>
     
+      <a class="ribbon" data-clickd-action="Fork" href="http://github.com/firstandthird/load-grunt-config"><img src="public/ribbon.png" alt="Fork me on GitHub"></a>
+    
     <div class="wrapper">
       
+      
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="load-grunt-config - Modularize your Gruntfile http://firstandthird.github.io/load-grunt-config/" >Tweet</a>
       
       <h1>load-grunt-config</h1>
 <p>Grunt plugin that lets you break up your Gruntfile config by task.  For most projects a single Gruntfile.js is perfect, but as projects grow, the Grunfile.js can get to a point where it&#39;s unmanagable.  That&#39;s where load-grunt-config comes in.  It was heavily inspired by <a href="http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html">this article</a>.
@@ -21,10 +39,10 @@
 <ul>
 <li>Each task has it&#39;s own config file. Example: jshint.js, mocha.js, etc.</li>
 <li>Auto load all grunt plugins.  Uses <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>.</li>
-<li>Auto expose package.json (&lt;%= package.name %&gt;) options.</li>
-<li>Support for YAML files</li>
-<li>Support for coffee files</li>
-<li>Easily register task aliases with aliases.yaml</li>
+<li>Auto expose package.json (&lt;%= package.name %&gt;).</li>
+<li>Support for YAML files.</li>
+<li>Support for coffee files.</li>
+<li>Easily register task aliases with aliases.yaml.</li>
 </ul>
 <h2>Installation</h2>
 <p><code>npm install -D load-grunt-config</code>
@@ -56,6 +74,9 @@
     });
 
 };</code></pre>
+<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer.
+
+</p>
 <p>grunt/jshint.js
 </p>
 <pre><code class="lang-javascript">module.exports = {
@@ -71,6 +92,10 @@
 <pre><code class="lang-coffee">module.<span class="built_in">exports</span> =
   <span class="attribute">options</span>:
     <span class="attribute">bare</span>: <span class="literal">true</span></code></pre>
+<h3>Aliases</h3>
+<p>If your <code>grunt/</code> folder contains an <code>aliases.js|yaml|coffee</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
+
+</p>
 <p>grunt/aliases.yaml
 </p>
 <pre><code class="lang-yaml"><span class="keyword">default</span>:
@@ -81,9 +106,14 @@
       <div class="footer">
         <div class="built-with">Built with <a href="https://github.com/jgallen23/ghpage">ghpage</a></div>
         
+          First + Third
+          
+        
       </div>
     </div>
     <script src="public/common.js"></script>
+    
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     
   </body>
 </html>

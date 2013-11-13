@@ -1,7 +1,13 @@
+options:
+  livereload: true
 markdown:
-  options:
-    livereload: true
   files: 
     - '<%= doc %>'
   tasks:
     - 'ghpage'
+build:
+  files:
+    - 'Gruntfile.js'
+    - 'grunt/*'
+  tasks:
+    - 'default'

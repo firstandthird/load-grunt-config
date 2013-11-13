@@ -1,6 +1,6 @@
 #load-grunt-config
 
-Grunt plugin that lets you break up your Gruntfile config by task.  For most projects a single Gruntfile.js is perfect, but as projects grow, the Grunfile.js can get to a point where it's unmanagable.  That's where load-grunt-config comes in.  It was heavily inspired by [this article](http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html).
+load-grunt-config is a Grunt library that lets you break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect, but as projects grow, the Grunfile.js can get to a point where it's unmanagable.  That's where load-grunt-config comes in.  It was heavily inspired by [this article](http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html).
 
 ##Features
 

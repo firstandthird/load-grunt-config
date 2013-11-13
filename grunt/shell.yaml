@@ -1,0 +1,4 @@
+checkout:
+  options:
+    stdout: true
+  command: 'git checkout master <%= masterDoc %>'

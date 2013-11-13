@@ -1,1 +1,89 @@
-My Page
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <head>
+    <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="public/common.css"/>
+    
+  </head>
+  <body>
+    <div id="toc"></div>
+    
+    <div class="wrapper">
+      
+      
+      <h1>load-grunt-config</h1>
+<p>Grunt plugin that lets you break up your Gruntfile config by task.  For most projects a single Gruntfile.js is perfect, but as projects grow, the Grunfile.js can get to a point where it&#39;s unmanagable.  That&#39;s where load-grunt-config comes in.  It was heavily inspired by <a href="http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html">this article</a>.
+
+</p>
+<h2>Features</h2>
+<ul>
+<li>Each task has it&#39;s own config file. Example: jshint.js, mocha.js, etc.</li>
+<li>Auto load all grunt plugins.  Uses <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>.</li>
+<li>Auto expose package.json (&lt;%= package.name %&gt;) options.</li>
+<li>Support for YAML files</li>
+<li>Support for coffee files</li>
+<li>Easily register task aliases with aliases.yaml</li>
+</ul>
+<h2>Installation</h2>
+<p><code>npm install -D load-grunt-config</code>
+
+</p>
+<h2>Example</h2>
+<p>Basic Gruntfile.js
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+
+    require(<span class="string">'load-grunt-config'</span>)(grunt);
+
+};</code></pre>
+<p>Gruntfile.js with options
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+
+    require(<span class="string">'load-grunt-config'</span>)(grunt, {
+        configPath: path.join(process.cwd(), <span class="string">'grunt'</span>), <span class="comment">//path to task.js files, defaults to grunt dir</span>
+        init: <span class="literal">true</span>, <span class="comment">//auto grunt.initConfig</span>
+        config: { <span class="comment">//additional config vars</span>
+            test: <span class="literal">false</span>
+        },
+        loadGruntTasks: { <span class="comment">//can optionally pass options to load-grunt-tasks.  If you set to false, it will disable auto loading tasks.</span>
+            pattern: <span class="string">'grunt-'</span>,
+            config: require(<span class="string">'./package.json'</span>),
+            scope: <span class="string">'devDependencies'</span>
+        }
+    });
+
+};</code></pre>
+<p>grunt/jshint.js
+</p>
+<pre><code class="lang-javascript">module.exports = {
+    all: [<span class="string">'Gruntfile.js'</span>, <span class="string">'lib/**/*.js'</span>, <span class="string">'test/**/*.js'</span>]
+}</code></pre>
+<p>grunt/notify.yaml
+</p>
+<pre><code class="lang-yaml"><span class="method">default:</span>
+  <span class="method">options:</span>
+    <span class="method">message:</span> <span class="string">'Default finished'</span></code></pre>
+<p>grunt/task.coffee
+</p>
+<pre><code class="lang-coffee">module.<span class="built_in">exports</span> =
+  <span class="attribute">options</span>:
+    <span class="attribute">bare</span>: <span class="literal">true</span></code></pre>
+<p>grunt/aliases.yaml
+</p>
+<pre><code class="lang-yaml"><span class="keyword">default</span>:
+    - <span class="comment">'jshint'</span>
+    - <span class="comment">'mocha'</span>
+    - <span class="comment">'notify'</span></code></pre>
+
+      <div class="footer">
+        <div class="built-with">Built with <a href="https://github.com/jgallen23/ghpage">ghpage</a></div>
+        
+      </div>
+    </div>
+    <script src="public/common.js"></script>
+    
+  </body>
+</html>

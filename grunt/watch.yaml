@@ -1,0 +1,7 @@
+markdown:
+  options:
+    livereload: true
+  files: 
+    - '<%= doc %>'
+  tasks:
+    - 'ghpage'

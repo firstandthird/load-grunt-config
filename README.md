@@ -69,7 +69,11 @@ module.exports =
     bare: true
 ```
 
-grunt/aliases.yaml - lets you define aliases (like `grunt.registerTask('default', ['jshint']);`)
+###Aliases
+
+If your `grunt/` folder contains an `aliases.js|yaml|coffee` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
+
+grunt/aliases.yaml
 ```yaml
 default:
 	- 'jshint'

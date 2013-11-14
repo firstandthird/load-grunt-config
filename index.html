@@ -32,22 +32,21 @@
       <a href="https://twitter.com/share" class="twitter-share-button" data-text="load-grunt-config - Modularize your Gruntfile http://firstandthird.github.io/load-grunt-config/" >Tweet</a>
       
       <h1>load-grunt-config</h1>
-<p>load-grunt-config is a Grunt library that lets you break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect, but as projects grow, the Grunfile.js can get to a point where it&#39;s unmanagable.  That&#39;s where load-grunt-config comes in.  It was heavily inspired by <a href="http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html">this article</a>.
+<p>load-grunt-config is a Grunt library that allows you to break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect. But as a project grows, the Gruntfile.js can quickly become unmanagable; this is where load-grunt-config comes in handy.  It was heavily inspired by <a href="http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html">Thomas Boyt&#39;s &quot;More Maintainable Gruntfiles&quot;</a>.
 
 </p>
 <h2>Features</h2>
 <ul>
-<li>Each task has it&#39;s own config file. Example: jshint.js, mocha.js, etc.</li>
+<li>Each task has its own config file. Example: jshint.js, mocha.js, etc.</li>
 <li>Auto load all grunt plugins.  Uses <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>.</li>
-<li>Auto expose package.json (&lt;%= package.name %&gt;).</li>
+<li>Auto expose package.json (<code>&lt;%= package.name %&gt;</code>).</li>
 <li>Support for YAML files.</li>
-<li>Support for coffee files.</li>
-<li>Easily register task aliases with aliases.yaml.</li>
+<li>Support for coffeescript files.</li>
+<li>Support for returning a function.</li>
+<li>Easily register task aliases with <code>aliases.(js|yaml|coffee)</code>.</li>
 </ul>
 <h2>Installation</h2>
-<p><code>npm install -D load-grunt-config</code>
-
-</p>
+<pre><code class="lang-bash">npm install -D load-grunt-config</code></pre>
 <h2>Example</h2>
 <p>Basic Gruntfile.js
 </p>
@@ -74,26 +73,47 @@
     });
 
 };</code></pre>
-<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer.
+<h3>Grunt tasks files</h3>
+<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
 </p>
-<p>grunt/jshint.js
+<p>Example js file returning an object - <code>grunt/watch.js</code>
 </p>
 <pre><code class="lang-javascript">module.exports = {
-    all: [<span class="string">'Gruntfile.js'</span>, <span class="string">'lib/**/*.js'</span>, <span class="string">'test/**/*.js'</span>]
-}</code></pre>
-<p>grunt/notify.yaml
+  all: {
+    files: [
+      <span class="string">'&lt;%= jshint.all %&gt;'</span>,
+      <span class="string">'grunt/*.yaml'</span>
+    ],
+    tasks: [
+      <span class="string">'default'</span>
+    ]
+  }
+};</code></pre>
+<p>Example js file returning a function - <code>grunt/jshint.js</code>
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
+  <span class="keyword">return</span> {
+    all: [
+      <span class="string">'Gruntfile.js'</span>,
+      <span class="string">'grunt/*.js'</span>,
+      <span class="string">'lib/*.js'</span>,
+      <span class="string">'test/*.js'</span>
+    ]
+  };
+};</code></pre>
+<p>Example yaml file - <code>grunt/notify.yaml</code>
 </p>
 <pre><code class="lang-yaml"><span class="method">default:</span>
   <span class="method">options:</span>
     <span class="method">message:</span> <span class="string">'Default finished'</span></code></pre>
-<p>grunt/task.coffee
+<p>Example coffee file - <code>grunt/task.coffee</code>
 </p>
 <pre><code class="lang-coffee">module.<span class="built_in">exports</span> =
   <span class="attribute">options</span>:
     <span class="attribute">bare</span>: <span class="literal">true</span></code></pre>
 <h3>Aliases</h3>
-<p>If your <code>grunt/</code> folder contains an <code>aliases.js|yaml|coffee</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
+<p>If your <code>grunt/</code> folder contains an <code>aliases.(js|yaml|coffee)</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
 
 </p>
 <p>grunt/aliases.yaml

@@ -1,19 +1,22 @@
 #load-grunt-config
 
-load-grunt-config is a Grunt library that lets you break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect, but as projects grow, the Grunfile.js can get to a point where it's unmanagable.  That's where load-grunt-config comes in.  It was heavily inspired by [this article](http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html).
+load-grunt-config is a Grunt library that allows you to break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect. But as a project grows, the Gruntfile.js can quickly become unmanagable; this is where load-grunt-config comes in handy.  It was heavily inspired by [Thomas Boyt's "More Maintainable Gruntfiles"](http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html).
 
 ##Features
 
-- Each task has it's own config file. Example: jshint.js, mocha.js, etc.
+- Each task has its own config file. Example: jshint.js, mocha.js, etc.
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks).
-- Auto expose package.json (<%= package.name %>).
+- Auto expose package.json (`<%= package.name %>`).
 - Support for YAML files.
-- Support for coffee files.
-- Easily register task aliases with aliases.yaml.
+- Support for coffeescript files.
+- Support for returning a function.
+- Easily register task aliases with `aliases.(js|yaml|coffee)`.
 
 ##Installation
 
-`npm install -D load-grunt-config`
+```bash
+npm install -D load-grunt-config
+```
 
 ##Example
 
@@ -46,23 +49,47 @@ module.exports = function(grunt) {
 };
 ```
 
-Here's what the files in your `grunt/` folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer.
+###Grunt tasks files
 
-grunt/jshint.js
+Here's what the files in your `grunt/` folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
+
+Example js file returning an object - `grunt/watch.js`
 ```javascript
 module.exports = {
-	all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js']
-}
+  all: {
+    files: [
+      '<%= jshint.all %>',
+      'grunt/*.yaml'
+    ],
+    tasks: [
+      'default'
+    ]
+  }
+};
 ```
 
-grunt/notify.yaml
+Example js file returning a function - `grunt/jshint.js`
+```javascript
+module.exports = function (grunt) {
+  return {
+    all: [
+      'Gruntfile.js',
+      'grunt/*.js',
+      'lib/*.js',
+      'test/*.js'
+    ]
+  };
+};
+```
+
+Example yaml file - `grunt/notify.yaml`
 ```yaml
 default:
   options:
     message: 'Default finished'
 ```
 
-grunt/task.coffee
+Example coffee file - `grunt/task.coffee`
 ```coffee
 module.exports =
   options:
@@ -71,7 +98,7 @@ module.exports =
 
 ###Aliases
 
-If your `grunt/` folder contains an `aliases.js|yaml|coffee` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
+If your `grunt/` folder contains an `aliases.(js|yaml|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 
 grunt/aliases.yaml
 ```yaml

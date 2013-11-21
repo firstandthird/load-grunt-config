@@ -1,0 +1,5 @@
+ghpage:
+  options:
+    base: 'site'
+    add: true
+    push: false

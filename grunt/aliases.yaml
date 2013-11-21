@@ -4,3 +4,6 @@ default:
   - 'jshint'
   - 'test'
   - 'notify'
+site:
+  - 'ghpage'
+  - 'gh-pages'

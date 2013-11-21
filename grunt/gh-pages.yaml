@@ -3,3 +3,4 @@ ghpage:
     base: 'site'
     add: true
     push: false
+  src: '**/*'

@@ -1,6 +1,0 @@
-ghpage:
-  options:
-    design: '<%= design %>'
-    data: '<%= data %>'
-  src: '<%= doc %>'
-  dest: '.'

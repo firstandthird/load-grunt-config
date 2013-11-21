@@ -1,7 +1,0 @@
-default:
-  - 'shell:checkout'
-  - 'ghpage'
-dev:
-  - 'default'
-  - 'connect'
-  - 'watch'

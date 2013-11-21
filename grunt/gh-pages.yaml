@@ -1,5 +1,4 @@
 ghpage:
   options:
     base: 'site'
-    add: true
   src: '**/*'

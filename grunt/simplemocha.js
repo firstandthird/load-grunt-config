@@ -1,5 +1,5 @@
 module.exports = {
   options: {
-    ui: 'tdd'
+    reporter: 'spec',
   }
 };

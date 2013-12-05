@@ -16,9 +16,6 @@ suite('load-config', function() {
 
       assert.ok(gruntOptions.jshint);
       assert.ok(gruntOptions.simplemocha);
-      assert.ok(gruntOptions.simplemocha.options);
-      assert.equal(gruntOptions.simplemocha.options.reporter, 'spec');
-      assert.equal(gruntOptions.simplemocha.options.ui, 'tdd');
       assert.ok(gruntOptions.watch);
       assert.ok(gruntOptions.notify);
       assert.ok(gruntOptions.coffee);

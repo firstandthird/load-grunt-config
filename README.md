@@ -32,10 +32,9 @@ module.exports = function(grunt) {
 Gruntfile.js with options
 ```javascript
 module.exports = function(grunt) {
-    var gruntTasks = path.join(process.cwd(), 'grunt');
+
 	require('load-grunt-config')(grunt, {
-		configPath: path.join(gruntTasks, 'custom'), //path to task.js files, defaults to grunt dir
-		defaultPath: path.join(gruntTasks, 'vendor'), // can be used for shared config
+		configPath: path.join(process.cwd(), 'grunt'), //path to task.js files, defaults to grunt dir
 		init: true, //auto grunt.initConfig
 		config: { //additional config vars
 			test: false

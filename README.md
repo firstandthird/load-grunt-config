@@ -10,6 +10,7 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - Support for YAML files.
 - Support for coffeescript files.
 - Support for returning a function.
+- Support for sharing config properties between tasks
 - Easily register task aliases with `aliases.(js|yaml|coffee)`.
 
 ##Installation
@@ -70,14 +71,12 @@ module.exports = {
 
 Example js file returning a function - `grunt/jshint.js`
 ```javascript
-module.exports = function (grunt) {
+// the config parameter provides a reference to options.config
+module.exports = function (grunt, config) {
   return {
     all: [
-      'Gruntfile.js',
-      'grunt/*.js',
-      'lib/*.js',
-      'test/*.js'
-    ]
+      'Gruntfile.js'
+    ].concat(config.jsSrcFolders)
   };
 };
 ```

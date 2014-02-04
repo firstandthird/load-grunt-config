@@ -9,7 +9,7 @@ suite('load-config', function() {
 
     var gruntOptions;
     setup(function() {
-      gruntOptions = loadConfig(grunt, { init: false, config: { debug: true, jshint: {} } });
+      gruntOptions = loadConfig(grunt, { init: false, config: { debug: true, jshint: {}, folders: ['dummy'] } });
     });
 
     test('read ', function() {
@@ -42,6 +42,12 @@ suite('load-config', function() {
       assert.ok(gruntOptions.debug);
       assert.ok(gruntOptions.jshint.all);
 
+    });
+    
+    test('shared config passing ', function() {
+
+      assert.equal(gruntOptions.jshint.dummy[0], 'dummy');
+      
     });
 
     test('load-grunt-tasks');

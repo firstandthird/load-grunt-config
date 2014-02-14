@@ -1,4 +1,11 @@
 
+0.7.1 / 2014-02-14 
+==================
+
+  * Use lodash-node instead of `grunt.util._` (shinnn)
+  * Update dependencies and devDependencies (shinnn)
+  * added the .yml extension as an option for loading yaml files (travi)
+
 0.7.0 / 2013-11-11 
 ==================
 

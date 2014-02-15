@@ -113,6 +113,7 @@ default:
 If you need to pass variables, e.g. from a .properties file to the targets in the folder grunt/*.js,  
 the code would look like:
 
+```javascript
 module.exports = function (grunt) {
 
     var properties = require("properties");
@@ -130,3 +131,4 @@ module.exports = function (grunt) {
 
     grunt.initConfig(grunt.util._.extend(propertiesConfig, config));
 }
+```

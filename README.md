@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 			test: false
 		},
 		loadGruntTasks: { //can optionally pass options to load-grunt-tasks.  If you set to false, it will disable auto loading tasks.
-			pattern: 'grunt-',
+			pattern: 'grunt-*',
 			config: require('./package.json'),
 			scope: 'devDependencies'
 		}

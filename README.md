@@ -107,3 +107,26 @@ default:
 	- 'mocha'
 	- 'notify'
 ```
+
+### Passing content to files
+
+If you need to pass variables, e.g. from a .properties file to the targets in the folder grunt/*.js,  
+the code would look like:
+
+module.exports = function (grunt) {
+
+    var properties = require("properties");
+    var _ = require("lodash");
+
+    var propertiesConfig = module.exports = {
+                   build: properties.parse(grunt.file.read("build.properties")
+                };
+                
+
+    var config = require('load-grunt-config')(grunt,
+      {
+        init : false
+      });
+
+    grunt.initConfig(grunt.util._.extend(propertiesConfig, config));
+}

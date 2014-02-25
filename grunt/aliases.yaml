@@ -1,9 +1,12 @@
 test:
-  - 'simplemocha'
+  - simplemocha
 default:
-  - 'jshint'
-  - 'test'
-  - 'notify'
+  - jshint
+  - test
+  - notify
+dev:
+  - default
+  - watch
 site:
-  - 'ghpage'
-  - 'gh-pages'
+  - ghpage
+  - gh-pages

@@ -1,0 +1,7 @@
+options:
+  reporter: spec
+  ui: tdd
+  grep: readfile
+all:
+  src:
+    - test/*.test.js

@@ -3,7 +3,7 @@ var assert = require('assert');
 var grunt = require('grunt');
 var loadConfig = require('../lib/load-config');
 
-suite('load-config', function() {
+suite.skip('load-config', function() {
 
   suite('basic', function() {
 

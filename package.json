@@ -31,6 +31,8 @@
     "glob": "~3.2.6",
     "js-yaml": "~3.0.1",
     "load-grunt-tasks": "~0.3.0",
-    "lodash-node": "~2.4.1"
+    "lodash-node": "~2.4.1",
+    "lodash": "~2.4.1",
+    "async": "~0.2.10"
   }
 }

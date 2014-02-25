@@ -45,8 +45,10 @@ suite('readfile', function() {
   test('read js file with function, returns function', function(done) {
     readfile(__dirname+'/fixtures/jsfun.js', function(err, fn) {
       assert.equal(typeof fn, 'function');
-      var obj = fn();
+      //fn takes two args, grunt and options
+      var obj = fn({}, { test: 1 });
       assert.equal(obj.jsFunFile.options.filename, 'jsfun.js');
+      assert.equal(obj.jsFunFile.options.test, 1);
       done();
     });
   });
@@ -54,6 +56,14 @@ suite('readfile', function() {
   test('read coffee file', function(done) {
     readfile(__dirname+'/fixtures/coffeefile.coffee', function(err, json) {
       assert.equal(json.coffeeFile.options.filename, 'read.coffee');
+      done();
+    });
+  });
+
+  test('read missing coffee file', function(done) {
+    readfile(__dirname+'/fixtures/coffeefile2.coffee', function(err, json) {
+      assert.notEqual(err, null);
+      assert.equal(json, null);
       done();
     });
   });

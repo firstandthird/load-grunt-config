@@ -1,8 +1,9 @@
-module.exports = function() {
+module.exports = function(grunt, options) {
   return {
     jsFunFile: {
       options: {
-        filename: 'jsfun.js'
+        filename: 'jsfun.js',
+        test: options.test
       }
     }
   };

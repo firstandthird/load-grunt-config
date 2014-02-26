@@ -1,7 +1,7 @@
 module.exports = {
   jsobjFile: {
     options: {
-      filename: 'jsobj.js'
+      filename: 'override'
     }
   }
 };

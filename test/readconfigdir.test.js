@@ -2,6 +2,7 @@
 
 var assert = require('assert');
 var readConfigDir = require('../lib/readconfigdir');
+var expected = require('./fixtures/output');
 
 suite('readConfigDir', function() {
 
@@ -12,47 +13,8 @@ suite('readConfigDir', function() {
       test: 1
     };
 
-    readConfigDir(__dirname+'/fixtures', grunt, options, function(err, obj) {
-
-      assert.deepEqual(obj, {
-        coffeefile: {
-          coffeeFile: {
-            options: {
-              filename: 'read.coffee'
-            }
-          }
-        },
-        jsfun: {
-          jsFunFile: {
-            options: {
-              filename: 'jsfun.js',
-              test: 1
-            }
-          }
-        },
-        jsobj: {
-          jsobjFile: {
-            options: {
-              filename: 'jsobj.js'
-            }
-          }
-        },
-        yamlfile: {
-          yamlFile: {
-            options: {
-              filename: 'read.yaml'
-            }
-          }
-        },
-        ymlfile: {
-          ymlFile: {
-            options: {
-              filename: 'read.yml'
-            }
-          }
-        }
-      });
-
+    readConfigDir(__dirname+'/config', grunt, options, function(err, obj) {
+      assert.deepEqual(obj, expected);
       done();
     });
   });

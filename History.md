@@ -1,4 +1,9 @@
 
+0.7.2 / 2014-03-12 
+==================
+
+  * Using js-yaml's safeLoad for YAML files instead of a simple require. Closes #28
+
 0.7.1 / 2014-02-14 
 ==================
 

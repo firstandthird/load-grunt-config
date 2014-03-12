@@ -3,3 +3,4 @@ all:
   - grunt/*.js
   - lib/*.js
   - test/*.js
+  - index.js

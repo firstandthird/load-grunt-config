@@ -12,10 +12,9 @@ var defaults = {
   data: {}
 };
 
-module.exports = function(grunt, options, callback) {
+module.exports = function(grunt, options) {
 
   options = options || {};
-  callback = callback || function() {};
   if (options.config) {
     options.data = options.config;
     delete options.config;
@@ -29,30 +28,23 @@ module.exports = function(grunt, options, callback) {
   }
 
 
-  gruntConfig(grunt, opts, function(err, config) {
+  var config = gruntConfig(grunt, opts);
 
-    if (err) {
-      return callback(err);
+  if (opts.init) {
+    grunt.initConfig(config);
+  }
+
+  if (opts.loadGruntTasks) {
+    require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
+  }
+
+  if (config.aliases) {
+    for (var taskName in config.aliases) {
+      grunt.registerTask(taskName, config.aliases[taskName]);
     }
 
-    if (opts.init) {
-      grunt.initConfig(config);
-    }
+  }
 
-    if (opts.loadGruntTasks) {
-      require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
-    }
-
-    if (config.aliases) {
-      for (var taskName in config.aliases) {
-        grunt.registerTask(taskName, config.aliases[taskName]);
-      }
-
-    }
-
-    callback(err, config);
-
-
-  });
+  return config;
 
 };

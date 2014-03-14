@@ -7,7 +7,7 @@ var expected = require('./fixtures/output');
 
 suite('gruntConfig', function() {
 
-  test('basic with data', function(done) {
+  test('basic with data', function() {
 
     var grunt = {};
     var options = {
@@ -17,14 +17,11 @@ suite('gruntConfig', function() {
       }
     };
 
-    gruntConfig(grunt, options, function(err, config) {
-      assert.equal(err, null);
-      assert.deepEqual(config, expected);
-      done();
-    });
+    var config = gruntConfig(grunt, options);
+    assert.deepEqual(config, expected);
   });
 
-  test('overridePath', function(done) {
+  test('overridePath', function() {
 
     var grunt = {};
     var options = {
@@ -35,16 +32,12 @@ suite('gruntConfig', function() {
       }
     };
 
-    gruntConfig(grunt, options, function(err, config) {
-      assert.equal(err, null);
+    var config = gruntConfig(grunt, options);
 
-      var expectedClone = _.clone(expected, true);
-      expectedClone.jsobj.jsobjFile.options.filename = 'override';
-      assert.deepEqual(config, expectedClone);
+    var expectedClone = _.clone(expected, true);
+    expectedClone.jsobj.jsobjFile.options.filename = 'override';
+    assert.deepEqual(config, expectedClone);
 
-      done();
-    });
   });
 
-  
 });

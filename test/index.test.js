@@ -16,8 +16,8 @@ suite('index', function() {
   };
 
   var fixture = require('./fixtures/output');
-  var gruntConfigStub = function(grunt, options, callback) {
-    callback(null, fixture);
+  var gruntConfigStub = function(grunt, options) {
+    return fixture;
   };
   var gruntConfigSpy = sinon.spy(gruntConfigStub);
   var loadGruntTasksSpy = sinon.spy();
@@ -46,160 +46,130 @@ suite('index', function() {
 
   suite('options', function() {
 
-    test('should default to grunt dir', function(done) {
-      loadGruntConfig(grunt, {}, function() {
-        var args = gruntConfigSpy.args[0];
-        var options = args[1];
-        assert.equal(options.configPath, path.join(process.cwd(), 'grunt'));
-        done();
-      });
+    test('should default to grunt dir', function() {
+      loadGruntConfig(grunt, {});
+      var args = gruntConfigSpy.args[0];
+      var options = args[1];
+      assert.equal(options.configPath, path.join(process.cwd(), 'grunt'));
     });
 
-    test('should default to init: true', function(done) {
-      loadGruntConfig(grunt, {}, function() {
-        var args = gruntConfigSpy.args[0];
-        var options = args[1];
-        assert.equal(options.init, true);
-        done();
-      });
+    test('should default to init: true', function() {
+      loadGruntConfig(grunt, {});
+      var args = gruntConfigSpy.args[0];
+      var options = args[1];
+      assert.equal(options.init, true);
     });
 
 
-    test('should support legacy config var', function(done) {
+    test('should support legacy config var', function() {
       var options = {
         config: {
           test: 1
         }
       };
-      loadGruntConfig(grunt, options, function() {
-        var args = gruntConfigSpy.args[0];
-        var options = args[1];
-        assert.equal(options.data.test, 1);
-        assert.equal(typeof options.config, 'undefined');
-        done();
-      });
-
+      loadGruntConfig(grunt, options);
+      var args = gruntConfigSpy.args[0];
+      var spyOptions = args[1];
+      assert.equal(spyOptions.data.test, 1);
+      assert.equal(typeof spyOptions.config, 'undefined');
     });
 
-    test('should support data passed in', function(done) {
+    test('should support data passed in', function() {
       var options = {
         data: {
           test: 1
         }
       };
-      loadGruntConfig(grunt, options, function() {
-        var args = gruntConfigSpy.args[0];
-        var options = args[1];
-        assert.equal(options.data.test, 1);
-        done();
-      });
-
+      loadGruntConfig(grunt, options);
+      var args = gruntConfigSpy.args[0];
+      var spyOptions = args[1];
+      assert.equal(spyOptions.data.test, 1);
     });
 
-    test('should have data object even if nothing passed in', function(done) {
+    test('should have data object even if nothing passed in', function() {
       var options = {
       };
-      loadGruntConfig(grunt, options, function() {
-        var args = gruntConfigSpy.args[0];
-        var options = args[1];
-        assert.equal(typeof options.data, 'object');
-        done();
-      });
-
+      loadGruntConfig(grunt, options);
+      var args = gruntConfigSpy.args[0];
+      var spyOptions = args[1];
+      assert.equal(typeof spyOptions.data, 'object');
     });
 
-    test('should pass contents of package.json to data', function(done) {
-      loadGruntConfig(grunt, {}, function() {
-        var args = gruntConfigSpy.args[0];
-        var options = args[1];
+    test('should pass contents of package.json to data', function() {
+      loadGruntConfig(grunt, {});
+      var args = gruntConfigSpy.args[0];
+      var options = args[1];
 
-        assert.equal(typeof options.data.package, 'object');
-        assert.equal(options.data.package.name, 'load-grunt-config');
-        done();
-
-      });
-
+      assert.equal(typeof options.data.package, 'object');
+      assert.equal(options.data.package.name, 'load-grunt-config');
     });
 
   });
 
   suite('grunt.initConfig', function() {
 
-    test('should call by default', function(done) {
+    test('should call by default', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config'
-      }, function() {
-        assert.ok(grunt.initConfig.calledOnce);
-        var config = grunt.initConfig.args[0][0];
-        assert.equal(typeof config, 'object');
-        assert.deepEqual(config, fixture);
-        done();
       });
+      assert.ok(grunt.initConfig.calledOnce);
+      var config = grunt.initConfig.args[0][0];
+      assert.equal(typeof config, 'object');
+      assert.deepEqual(config, fixture);
     });
 
-    test('should not call if init: false', function(done) {
+    test('should not call if init: false', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config',
         init: false
-      }, function() {
-        assert.ok(grunt.initConfig.notCalled);
-        done();
       });
+      assert.ok(grunt.initConfig.notCalled);
     });
   });
 
 
   suite('load-grunt-tasks', function() {
 
-    test('should call by default', function(done) {
+    test('should call by default', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config'
-      }, function() {
-        assert.ok(loadGruntTasksSpy.called);
-        var args = loadGruntTasksSpy.args[0];
-        assert.ok(args.length, 2);
-        done();
       });
+      assert.ok(loadGruntTasksSpy.called);
+      var args = loadGruntTasksSpy.args[0];
+      assert.ok(args.length, 2);
     });
 
-    test('should pass in options', function(done) {
+    test('should pass in options', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config',
         loadGruntTasks: {
           test: 1
         }
-      }, function() {
-        assert.ok(loadGruntTasksSpy.called);
-        var args = loadGruntTasksSpy.args[0];
-        assert.deepEqual(args[1], { test: 1 });
-        done();
       });
-
+      assert.ok(loadGruntTasksSpy.called);
+      var args = loadGruntTasksSpy.args[0];
+      assert.deepEqual(args[1], { test: 1 });
     });
 
-    test('should not call if loadGruntTasks: false', function(done) {
+    test('should not call if loadGruntTasks: false', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config',
         loadGruntTasks: false
-      }, function() {
-        assert.ok(loadGruntTasksSpy.notCalled);
-        done();
       });
+      assert.ok(loadGruntTasksSpy.notCalled);
     });
   });
 
 
   suite('aliases', function() {
-    test('should registerTask for each alias', function(done) {
+    test('should registerTask for each alias', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config'
-      }, function() {
-        assert.equal(grunt.registerTask.callCount, 1);
-        var args = grunt.registerTask.args[0];
-        assert.equal(args[0], 'default');
-        assert.deepEqual(args[1], ['test']);
-        done();
       });
+      assert.equal(grunt.registerTask.callCount, 1);
+      var args = grunt.registerTask.args[0];
+      assert.equal(args[0], 'default');
+      assert.deepEqual(args[1], ['test']);
     });
   });
 

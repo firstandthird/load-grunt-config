@@ -6,16 +6,14 @@ var expected = require('./fixtures/output');
 
 suite('readConfigDir', function() {
 
-  test('read fixture directory', function(done) {
+  test('read fixture directory', function() {
 
     var grunt = {};
     var options = {
       test: 1
     };
 
-    readConfigDir(__dirname+'/config', grunt, options, function(err, obj) {
-      assert.deepEqual(obj, expected);
-      done();
-    });
+    var obj = readConfigDir(__dirname+'/config', grunt, options);
+    assert.deepEqual(obj, expected);
   });
 });

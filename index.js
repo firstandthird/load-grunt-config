@@ -7,6 +7,8 @@ var cwd = process.cwd();
 var defaults = {
   configPath: path.join(cwd, 'grunt'),
   init: true,
+  loadGruntTasks: {
+  },
   data: {}
 };
 
@@ -35,6 +37,17 @@ module.exports = function(grunt, options, callback) {
 
     if (opts.init) {
       grunt.initConfig(config);
+    }
+
+    if (opts.loadGruntTasks) {
+      require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
+    }
+
+    if (config.aliases) {
+      for (var taskName in config.aliases) {
+        grunt.registerTask(taskName, config.aliases[taskName]);
+      }
+
     }
 
     callback(err, config);

@@ -1,4 +1,9 @@
 module.exports = {
+  aliases: {
+    default: [
+      'test'
+    ]
+  },
   coffeefile: {
     coffeeFile: {
       options: {

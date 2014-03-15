@@ -1,4 +1,23 @@
 
+0.8.0beta1 / 2014-03-14 
+==================
+
+  * updated readme
+  * fixed exposing config/data to main grunt config
+  * refactored everything to be sync
+  * removed legacy files
+  * finished up index.js functionality and tests
+  * more tests passing on index.js
+  * initial work on main lib
+  * feat(gruntconfig): set up method with tests
+  * refactor(tests): moved fixtures into config folder, added output fixture
+  * refactor(readconfigdir): use extname and basename instead of regex
+  * feat(readConfigDir): added new method
+  * refactor(load-config.test): skip tests for now
+  * feat(readfile): check if file exists
+  * readfile with tests
+  * switched build files to use yaml
+
 0.7.1 / 2014-02-14 
 ==================
 

@@ -60,6 +60,18 @@ suite('index', function() {
       assert.equal(options.init, true);
     });
 
+    test('should support data passed in', function() {
+      var options = {
+        data: {
+          test: 1
+        }
+      };
+      var out = loadGruntConfig(grunt, options);
+      var args = gruntConfigSpy.args[0];
+      var spyOptions = args[1];
+      assert.equal(spyOptions.data.test, 1);
+      assert.equal(out.test, 1);
+    });
 
     test('should support legacy config var', function() {
       var options = {
@@ -67,23 +79,12 @@ suite('index', function() {
           test: 1
         }
       };
-      loadGruntConfig(grunt, options);
+      var out = loadGruntConfig(grunt, options);
       var args = gruntConfigSpy.args[0];
       var spyOptions = args[1];
       assert.equal(spyOptions.data.test, 1);
       assert.equal(typeof spyOptions.config, 'undefined');
-    });
-
-    test('should support data passed in', function() {
-      var options = {
-        data: {
-          test: 1
-        }
-      };
-      loadGruntConfig(grunt, options);
-      var args = gruntConfigSpy.args[0];
-      var spyOptions = args[1];
-      assert.equal(spyOptions.data.test, 1);
+      assert.equal(out.test, 1);
     });
 
     test('should have data object even if nothing passed in', function() {

@@ -19,7 +19,7 @@ module.exports = function(grunt, options) {
     options.data = options.config;
     delete options.config;
   }
-  var opts = _.merge({}, defaults, options);
+  var opts = _.merge({}, defaults, options, options.data);
 
   var packageJsonPath = path.join(cwd, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
@@ -29,6 +29,8 @@ module.exports = function(grunt, options) {
 
 
   var config = gruntConfig(grunt, opts);
+
+  config = _.merge({}, config, options.data);
 
   if (opts.init) {
     grunt.initConfig(config);

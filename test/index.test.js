@@ -3,6 +3,7 @@ var assert = require('assert');
 var proxyquire = require('proxyquire');
 var sinon = require('sinon');
 var path = require('path');
+var _ = require('lodash-node');
 var loadGruntConfig = require('../');
 
 
@@ -16,6 +17,9 @@ suite('index', function() {
   };
 
   var fixture = require('./fixtures/output');
+  var fixtureWithPackage = _.cloneDeep(fixture);
+  fixtureWithPackage.package = require('../package.json');
+
   var gruntConfigStub = function(grunt, options) {
     return fixture;
   };
@@ -105,6 +109,12 @@ suite('index', function() {
       assert.equal(options.data.package.name, 'load-grunt-config');
     });
 
+    test('should add package.json to config obj', function() {
+      var config = loadGruntConfig(grunt, {});
+      assert.equal(typeof config.package, 'object');
+      assert.equal(config.package.name, 'load-grunt-config');
+    });
+
   });
 
   suite('grunt.initConfig', function() {
@@ -116,7 +126,7 @@ suite('index', function() {
       assert.ok(grunt.initConfig.calledOnce);
       var config = grunt.initConfig.args[0][0];
       assert.equal(typeof config, 'object');
-      assert.deepEqual(config, fixture);
+      assert.deepEqual(config, fixtureWithPackage);
     });
 
     test('should not call if init: false', function() {

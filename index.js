@@ -30,7 +30,7 @@ module.exports = function(grunt, options) {
 
   var config = gruntConfig(grunt, opts);
 
-  config = _.merge({}, config, options.data);
+  config = _.merge({}, config, opts.data);
 
   if (opts.init) {
     grunt.initConfig(config);

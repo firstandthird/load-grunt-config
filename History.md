@@ -1,4 +1,9 @@
 
+0.8.0beta2 / 2014-03-20 
+==================
+
+  * fixed bug where package.json wasn't getting added to config object. fixes #46
+
 0.8.0beta1 / 2014-03-14 
 ==================
 

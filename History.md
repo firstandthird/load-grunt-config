@@ -1,4 +1,12 @@
 
+0.8.0 / 2014-04-16 
+==================
+
+  * re-styling readfile.js a bit.
+  * Merge pull request #35 from defaude/master
+  * Fixing stupid typo...
+  * Using js-yaml's safeLoad for YAML files instead of a simple require. Closes #28
+
 0.8.0beta2 / 2014-03-20 
 ==================
 

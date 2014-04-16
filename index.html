@@ -62,11 +62,11 @@
     require(<span class="string">'load-grunt-config'</span>)(grunt, {
         configPath: path.join(process.cwd(), <span class="string">'grunt'</span>), <span class="comment">//path to task.js files, defaults to grunt dir</span>
         init: <span class="literal">true</span>, <span class="comment">//auto grunt.initConfig</span>
-        config: { <span class="comment">//additional config vars</span>
+        data: { <span class="comment">//data passed into config.  Can use with &lt;%= test %&gt;</span>
             test: <span class="literal">false</span>
         },
         loadGruntTasks: { <span class="comment">//can optionally pass options to load-grunt-tasks.  If you set to false, it will disable auto loading tasks.</span>
-            pattern: <span class="string">'grunt-'</span>,
+            pattern: <span class="string">'grunt-*'</span>,
             config: require(<span class="string">'./package.json'</span>),
             scope: <span class="string">'devDependencies'</span>
         }
@@ -92,13 +92,14 @@
 };</code></pre>
 <p>Example js file returning a function - <code>grunt/jshint.js</code>
 </p>
-<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt)</span> {</span>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt, options)</span> {</span>
   <span class="keyword">return</span> {
     all: [
       <span class="string">'Gruntfile.js'</span>,
       <span class="string">'grunt/*.js'</span>,
       <span class="string">'lib/*.js'</span>,
-      <span class="string">'test/*.js'</span>
+      <span class="string">'test/*.js'</span>,
+      options.someFile
     ]
   };
 };</code></pre>
@@ -119,9 +120,21 @@
 <p>grunt/aliases.yaml
 </p>
 <pre><code class="lang-yaml"><span class="keyword">default</span>:
-    - <span class="comment">'jshint'</span>
-    - <span class="comment">'mocha'</span>
-    - <span class="comment">'notify'</span></code></pre>
+  - <span class="comment">'jshint'</span>
+  - <span class="comment">'mocha'</span>
+  - <span class="comment">'notify'</span></code></pre>
+<h3>Custom Config</h3>
+<p>There are certain scenarios where you might have a base config for your team, and you want to be able to override some of the config based on your personal setup.  You can do that with the <code>overridePath</code> property.  In this case, the library will merge the two, with the override path taking priority.  For example:
+
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+
+  require(<span class="string">'load-grunt-config'</span>)(grunt, {
+    configPath: path.join(process.cwd(), <span class="string">'vendor'</span>),
+    overridePath: path.join(process.cwd(), <span class="string">'config-'</span>+process.env.USER)
+  });
+
+};</code></pre>
 
       <div class="footer">
         <div class="built-with">Built with <a href="https://github.com/jgallen23/ghpage">ghpage</a></div>

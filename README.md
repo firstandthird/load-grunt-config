@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 	require('load-grunt-config')(grunt, {
 		configPath: path.join(process.cwd(), 'grunt'), //path to task.js files, defaults to grunt dir
 		init: true, //auto grunt.initConfig
-		config: { //additional config vars
+		data: { //data passed into config.  Can use with <%= test %>
 			test: false
 		},
 		loadGruntTasks: { //can optionally pass options to load-grunt-tasks.  If you set to false, it will disable auto loading tasks.
@@ -70,13 +70,14 @@ module.exports = {
 
 Example js file returning a function - `grunt/jshint.js`
 ```javascript
-module.exports = function (grunt) {
+module.exports = function (grunt, options) {
   return {
     all: [
       'Gruntfile.js',
       'grunt/*.js',
       'lib/*.js',
-      'test/*.js'
+      'test/*.js',
+      options.someFile
     ]
   };
 };
@@ -103,7 +104,22 @@ If your `grunt/` folder contains an `aliases.(js|yaml|coffee)` file, `load-grunt
 grunt/aliases.yaml
 ```yaml
 default:
-	- 'jshint'
-	- 'mocha'
-	- 'notify'
+  - 'jshint'
+  - 'mocha'
+  - 'notify'
+```
+
+### Custom Config
+
+There are certain scenarios where you might have a base config for your team, and you want to be able to override some of the config based on your personal setup.  You can do that with the `overridePath` property.  In this case, the library will merge the two, with the override path taking priority.  For example:
+
+```javascript
+module.exports = function(grunt) {
+
+  require('load-grunt-config')(grunt, {
+    configPath: path.join(process.cwd(), 'vendor'),
+    overridePath: path.join(process.cwd(), 'config-'+process.env.USER)
+  });
+
+};
 ```

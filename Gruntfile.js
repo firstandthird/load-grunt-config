@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  require('./lib/load-config')(grunt, {
+  require('./index')(grunt, {
     config: {
       doc: 'README.md',
       design: 'clean',

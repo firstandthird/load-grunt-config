@@ -1,0 +1,8 @@
+all:
+  files:
+    - <%= jshint.all %>
+    - grunt/*.yaml
+    - test/fixtures/*
+    - test/config/*
+  tasks:
+    - default

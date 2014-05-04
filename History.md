@@ -1,4 +1,10 @@
 
+0.9.0 / 2014-05-04 
+==================
+
+  * added support for config groupings
+  * fixed ghpage config
+
 0.8.0 / 2014-04-16 
 ==================
 

@@ -150,7 +150,7 @@ This would be the equivalent in your `Gruntfile.js`:
   jshint: {
     scripts: {
       files: [
-        - '*.js'
+        '*.js'
       ]
     }
   },

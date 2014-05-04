@@ -1,0 +1,8 @@
+jshint:
+  files:
+    - '*.js'
+watch:
+  files:
+    - '*.js'
+  tasks:
+    - 'scripts'

@@ -2,7 +2,6 @@
 
 var assert = require('assert');
 var readConfigDir = require('../lib/readconfigdir');
-var expected = require('./fixtures/output');
 
 suite('readConfigDir', function() {
 
@@ -14,6 +13,13 @@ suite('readConfigDir', function() {
     };
 
     var obj = readConfigDir(__dirname+'/config', grunt, options);
-    assert.deepEqual(obj, expected);
+    assert.deepEqual(obj, require('./fixtures/output'));
   });
+
+  test('multiconfig', function() {
+    var grunt = {};
+    var obj = readConfigDir(__dirname+'/fixtures/multiconfig', grunt);
+    assert.deepEqual(obj, require('./fixtures/output/multiconfig'));
+  });
+
 });

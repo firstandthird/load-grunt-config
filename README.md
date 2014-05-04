@@ -10,7 +10,9 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - Support for YAML files.
 - Support for coffeescript files.
 - Support for returning a function.
-- Easily register task aliases with `aliases.(js|yaml|coffee)`.
+- [Easily register task aliases](#aliases) with `aliases.(js|yaml|coffee)`.
+- [Config overrides](#custom-config)
+- [Config grouping](#config-grouping)
 
 ##Installation
 
@@ -123,3 +125,46 @@ module.exports = function(grunt) {
 
 };
 ```
+
+### Config Grouping
+
+`load-grunt-config` also supports grouping tasks.  This is handy when you want to group all of your script or css tasks together.  To do that, just add the suffix `-tasks` to your config filename and `load-grunt-config` will treat the filename as the task target and the top level keys as the task names.
+
+Here's an example
+
+Filename: `/config/scripts-tasks.yaml`
+```yaml
+jshint:
+  files:
+    - '*.js'
+watch:
+  files:
+    - '*.js'
+  tasks:
+    - 'scripts'
+```
+
+This would be the equivalent in your `Gruntfile.js`:
+```javascript
+{
+  jshint: {
+    scripts: {
+      files: [
+        - '*.js'
+      ]
+    }
+  },
+  watch: {
+    scripts: {
+      files: [
+        '*.js'
+      ],
+      tasks: [
+        'scripts'
+      ]
+    }
+  }
+}
+```
+
+

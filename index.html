@@ -43,7 +43,9 @@
 <li>Support for YAML files.</li>
 <li>Support for coffeescript files.</li>
 <li>Support for returning a function.</li>
-<li>Easily register task aliases with <code>aliases.(js|yaml|coffee)</code>.</li>
+<li><a href="#aliases">Easily register task aliases</a> with <code>aliases.(js|yaml|coffee)</code>.</li>
+<li><a href="#custom-config">Config overrides</a></li>
+<li><a href="#config-grouping">Config grouping</a></li>
 </ul>
 <h2>Installation</h2>
 <pre><code class="lang-bash">npm install -D load-grunt-config</code></pre>
@@ -135,6 +137,44 @@
   });
 
 };</code></pre>
+<h3>Config Grouping</h3>
+<p><code>load-grunt-config</code> also supports grouping tasks.  This is handy when you want to group all of your script or css tasks together.  To do that, just add the suffix <code>-tasks</code> to your config filename and <code>load-grunt-config</code> will treat the filename as the task target and the top level keys as the task names.
+
+</p>
+<p>Here&#39;s an example
+
+</p>
+<p>Filename: <code>/config/scripts-tasks.yaml</code>
+</p>
+<pre><code class="lang-yaml"><span class="method">jshint:</span>
+  <span class="method">files:</span>
+    - <span class="string">'*.js'</span>
+<span class="method">watch:</span>
+  <span class="method">files:</span>
+    - <span class="string">'*.js'</span>
+  <span class="method">tasks:</span>
+    - <span class="string">'scripts'</span></code></pre>
+<p>This would be the equivalent in your <code>Gruntfile.js</code>:
+</p>
+<pre><code class="lang-javascript">{
+  jshint: {
+    scripts: {
+      files: [
+        <span class="string">'*.js'</span>
+      ]
+    }
+  },
+  watch: {
+    scripts: {
+      files: [
+        <span class="string">'*.js'</span>
+      ],
+      tasks: [
+        <span class="string">'scripts'</span>
+      ]
+    }
+  }
+}</code></pre>
 
       <div class="footer">
         <div class="built-with">Built with <a href="https://github.com/jgallen23/ghpage">ghpage</a></div>

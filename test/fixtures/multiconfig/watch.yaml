@@ -1,0 +1,6 @@
+otherTarget:
+  files:
+    - '*.html'
+  tasks:
+    - html
+

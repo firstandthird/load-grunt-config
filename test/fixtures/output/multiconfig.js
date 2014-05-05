@@ -1,4 +1,9 @@
 module.exports = {
+  aliases: {
+    test: [
+      'jshint'
+    ]
+  },
   jshint: {
     test: {
       files: [
@@ -13,6 +18,14 @@ module.exports = {
       ],
       tasks: [
         'scripts'
+      ]
+    },
+    otherTarget: {
+      files: [
+        '*.html'
+      ],
+      tasks: [
+        'html'
       ]
     }
   }

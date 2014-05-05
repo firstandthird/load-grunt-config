@@ -19,7 +19,8 @@ suite('readConfigDir', function() {
   test('multiconfig', function() {
     var grunt = {};
     var obj = readConfigDir(__dirname+'/fixtures/multiconfig', grunt);
-    assert.deepEqual(obj, require('./fixtures/output/multiconfig'));
+    var expected = require('./fixtures/output/multiconfig');
+    assert.deepEqual(obj, expected);
   });
 
 });

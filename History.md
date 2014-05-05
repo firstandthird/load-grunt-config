@@ -1,4 +1,10 @@
 
+0.9.1 / 2014-05-04 
+==================
+
+  * fix for mix and matching config grouping and task based config
+  * fixed readme
+
 0.9.0 / 2014-05-04 
 ==================
 

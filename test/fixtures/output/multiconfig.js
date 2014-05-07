@@ -28,5 +28,11 @@ module.exports = {
         'html'
       ]
     }
+  },
+  copy: {
+    jsfun: {
+      src: '*.js',
+      dest: 'build'
+    }
   }
 };

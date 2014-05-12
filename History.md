@@ -1,4 +1,10 @@
 
+0.9.2 / 2014-05-12 
+==================
+
+  * Allow group config files to return a function.
+  * Livescript support
+
 0.9.1 / 2014-05-04 
 ==================
 

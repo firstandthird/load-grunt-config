@@ -25,6 +25,7 @@ suite('index', function() {
   };
   var gruntConfigSpy = sinon.spy(gruntConfigStub);
   var loadGruntTasksSpy = sinon.spy();
+  var jitGruntSpy = sinon.spy();
 
   setup(function(done) {
     original = loadGruntConfig;
@@ -32,7 +33,8 @@ suite('index', function() {
     //hijack gruntConfig lib and just return back the options so we can test just the loadGruntConfig module
     loadGruntConfig = proxyquire('../', {
       './lib/gruntconfig': gruntConfigSpy,
-      'load-grunt-tasks': loadGruntTasksSpy
+      'load-grunt-tasks': loadGruntTasksSpy,
+      'jit-grunt': jitGruntSpy
     });
     done();
 
@@ -44,6 +46,7 @@ suite('index', function() {
     grunt.registerTask.reset();
     gruntConfigSpy.reset();
     loadGruntTasksSpy.reset();
+    jitGruntSpy.reset();
     done();
   });
 
@@ -169,8 +172,52 @@ suite('index', function() {
       });
       assert.ok(loadGruntTasksSpy.notCalled);
     });
+
+    test('should not call if jitGrunt config specified', function() {
+      loadGruntConfig(grunt, {
+        configPath: 'test/config',
+        jitGrunt: {}
+      });
+      assert.ok(loadGruntTasksSpy.notCalled);
+    });
   });
 
+  suite('jit-grunt', function() {
+    test('should not call by default', function() {
+      loadGruntConfig(grunt, {
+        configPath: 'test/config'
+      });
+      assert.ok(jitGruntSpy.notCalled);
+    });
+
+    test('should call if jitGrunt config specified', function() {
+      loadGruntConfig(grunt, {
+        configPath: 'test/config',
+        jitGrunt: {}
+      });
+      assert.ok(jitGruntSpy.called);
+      var args = jitGruntSpy.args[0];
+      assert.ok(args.length, 2);
+    });
+
+    test('should call if jitGrunt: true', function() {
+      loadGruntConfig(grunt, {
+        configPath: 'test/config',
+        jitGrunt: true
+      });
+      assert.ok(jitGruntSpy.called);
+      var args = jitGruntSpy.args[0];
+      assert.ok(args.length, 2);
+    });
+
+    test('should not call if jitGrunt: false and gruntLoadTasks: false', function() {
+      loadGruntConfig(grunt, {
+        configPath: 'test/config',
+        jitGrunt: false
+      });
+      assert.ok(jitGruntSpy.notCalled);
+    });
+  });
 
   suite('aliases', function() {
     test('should registerTask for each alias', function() {

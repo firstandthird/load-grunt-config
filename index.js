@@ -7,6 +7,7 @@ var cwd = process.cwd();
 var defaults = {
   configPath: path.join(cwd, 'grunt'),
   init: true,
+  jitGrunt: false,
   loadGruntTasks: {
   },
   data: {}
@@ -36,8 +37,10 @@ module.exports = function(grunt, options) {
     grunt.initConfig(config);
   }
 
-  if (opts.loadGruntTasks) {
+  if (opts.jitGrunt === false && opts.loadGruntTasks) {
     require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
+  } else if (opts.jitGrunt) {
+    require('jit-grunt')(grunt, opts.jitGrunt);
   }
 
   if (config.aliases) {

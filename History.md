@@ -1,7 +1,8 @@
 
-0.10.0-beta.1 / 2014-06-07 
+0.10.0 / 2014-06-17 
 ==================
 
+  * fixed support for json config files (SolomoN-ua)
   * Allow just-in-time loading (SolomoN-ua)
 
 0.9.2 / 2014-05-12 

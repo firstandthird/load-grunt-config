@@ -10,7 +10,7 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - Support for YAML files.
 - Support for coffeescript files.
 - Support for returning a function.
-- [Easily register task aliases](#aliases) with `aliases.(js|yaml|coffee)`.
+- [Easily register task aliases](#aliases) with `aliases.(js|json|yaml|coffee)`.
 - [Config overrides](#custom-config)
 - [Config grouping](#config-grouping)
 
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 
 ###Grunt tasks files
 
-Here's what the files in your `grunt/` folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
+Here's what the files in your `grunt/` folder could look like.  You can use either .js, .json, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
 Example js file returning an object - `grunt/watch.js`
 ```javascript
@@ -85,6 +85,16 @@ module.exports = function (grunt, options) {
 };
 ```
 
+Example json file - `grunt/clean.json`
+```json
+{
+  "all": [
+    "<%= project.dest %>",
+    "target/*.js"
+  ]
+}
+```
+
 Example yaml file - `grunt/notify.yaml`
 ```yaml
 default:
@@ -101,7 +111,7 @@ module.exports =
 
 ###Aliases
 
-If your `grunt/` folder contains an `aliases.(js|yaml|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
+If your `grunt/` folder contains an `aliases.(js|.json|yaml|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 
 grunt/aliases.yaml
 ```yaml

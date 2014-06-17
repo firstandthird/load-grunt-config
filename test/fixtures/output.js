@@ -27,6 +27,13 @@ module.exports = {
       }
     }
   },
+  jsonfile: {
+    jsonFile: {
+      options: {
+        filename: 'read.json'
+      }
+    }
+  },
   yamlfile: {
     yamlFile: {
       options: {

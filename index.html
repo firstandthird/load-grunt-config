@@ -38,12 +38,12 @@
 <h2>Features</h2>
 <ul>
 <li>Each task has its own config file. Example: jshint.js, mocha.js, etc.</li>
-<li>Auto load all grunt plugins.  Uses <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>.</li>
+<li>Auto load all grunt plugins.  Uses <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>. (Optionally it can use <a href="https://github.com/shootaroo/jit-grunt">jit-grunt</a>)</li>
 <li>Auto expose package.json (<code>&lt;%= package.name %&gt;</code>).</li>
 <li>Support for YAML files.</li>
 <li>Support for coffeescript files.</li>
 <li>Support for returning a function.</li>
-<li><a href="#aliases">Easily register task aliases</a> with <code>aliases.(js|yaml|coffee)</code>.</li>
+<li><a href="#aliases">Easily register task aliases</a> with <code>aliases.(js|json|yaml|coffee)</code>.</li>
 <li><a href="#custom-config">Config overrides</a></li>
 <li><a href="#config-grouping">Config grouping</a></li>
 </ul>
@@ -60,6 +60,7 @@
 <p>Gruntfile.js with options
 </p>
 <pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+    <span class="keyword">var</span> path = require(<span class="string">'path'</span>);
 
     require(<span class="string">'load-grunt-config'</span>)(grunt, {
         configPath: path.join(process.cwd(), <span class="string">'grunt'</span>), <span class="comment">//path to task.js files, defaults to grunt dir</span>
@@ -75,8 +76,23 @@
     });
 
 };</code></pre>
+<p>Optionally you can use <a href="https://github.com/shootaroo/jit-grunt">jit-grunt</a> instead of <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+
+    require(<span class="string">'load-grunt-config'</span>)(grunt, {
+        <span class="comment">// ...</span>
+        jitGrunt: { 
+            <span class="comment">//here you can pass options to jit-grunt (or just jitGrunt: true)</span>
+        }
+    });
+
+};</code></pre>
+<p>Note: if you have problems with auto loading of some tasks please check <a href="https://github.com/shootaroo/jit-grunt#static-mappings">jit-grunt#static-mappings</a>
+
+</p>
 <h3>Grunt tasks files</h3>
-<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
+<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .json, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
 </p>
 <p>Example js file returning an object - <code>grunt/watch.js</code>
@@ -105,6 +121,14 @@
     ]
   };
 };</code></pre>
+<p>Example json file - <code>grunt/clean.json</code>
+</p>
+<pre><code class="lang-json">{
+  "<span class="attribute">all</span>": <span class="value">[
+    <span class="string">"&lt;%= project.dest %&gt;"</span>,
+    <span class="string">"target/*.js"</span>
+  ]
+</span>}</code></pre>
 <p>Example yaml file - <code>grunt/notify.yaml</code>
 </p>
 <pre><code class="lang-yaml"><span class="method">default:</span>
@@ -116,7 +140,7 @@
   <span class="attribute">options</span>:
     <span class="attribute">bare</span>: <span class="literal">true</span></code></pre>
 <h3>Aliases</h3>
-<p>If your <code>grunt/</code> folder contains an <code>aliases.(js|yaml|coffee)</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
+<p>If your <code>grunt/</code> folder contains an <code>aliases.(js|.json|yaml|coffee)</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
 
 </p>
 <p>grunt/aliases.yaml

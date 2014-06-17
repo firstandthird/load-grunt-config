@@ -5,7 +5,7 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 ##Features
 
 - Each task has its own config file. Example: jshint.js, mocha.js, etc.
-- Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks).
+- Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks). (Optionally it can use [jit-grunt](https://github.com/shootaroo/jit-grunt))
 - Auto expose package.json (`<%= package.name %>`).
 - Support for YAML files.
 - Support for coffeescript files.
@@ -34,7 +34,8 @@ module.exports = function(grunt) {
 Gruntfile.js with options
 ```javascript
 module.exports = function(grunt) {
-
+	var path = require('path');
+	
 	require('load-grunt-config')(grunt, {
 		configPath: path.join(process.cwd(), 'grunt'), //path to task.js files, defaults to grunt dir
 		init: true, //auto grunt.initConfig
@@ -50,6 +51,21 @@ module.exports = function(grunt) {
 
 };
 ```
+
+Optionally you can use [jit-grunt](https://github.com/shootaroo/jit-grunt) instead of [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks)
+```javascript
+module.exports = function(grunt) {
+
+	require('load-grunt-config')(grunt, {
+		// ...
+		jitGrunt: { 
+			//here you can pass options to jit-grunt (or just jitGrunt: true)
+		}
+	});
+
+};
+```
+Note: if you have problems with auto loading of some tasks please check [jit-grunt#static-mappings](https://github.com/shootaroo/jit-grunt#static-mappings)
 
 ###Grunt tasks files
 

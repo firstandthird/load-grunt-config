@@ -2,7 +2,14 @@ module.exports = {
   aliases: {
     default: [
       'test'
-    ]
+    ],
+    anotherTask: {
+      description: 'This is an awesome task',
+      tasks: [
+        'foo',
+        'bar'
+      ]
+    }
   },
   coffeefile: {
     coffeeFile: {

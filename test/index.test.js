@@ -224,10 +224,22 @@ suite('index', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config'
       });
-      assert.equal(grunt.registerTask.callCount, 1);
+      assert.equal(grunt.registerTask.callCount, 2);
       var args = grunt.registerTask.args[0];
       assert.equal(args[0], 'default');
       assert.deepEqual(args[1], ['test']);
+    });
+    test('should pass the description if it\'s available', function () {
+      loadGruntConfig(grunt, {
+        configPath: 'test/config'
+      });
+      assert.equal(grunt.registerTask.callCount, 2);
+
+      var args = grunt.registerTask.args[1];
+
+      assert.equal(args[0], 'anotherTask');
+      assert.equal(args[1], 'This is an awesome task');
+      assert.equal(typeof args[2], 'function');
     });
   });
 

@@ -53,7 +53,7 @@ module.exports = function(grunt, options) {
     for (var taskName in config.aliases) {
       var task = config.aliases[taskName];
 
-      if (typeof task === 'string' || Array.isArray(task)){
+      if (typeof task === 'string' || typeof task === 'function' || Array.isArray(task)){
         grunt.registerTask(taskName, task);
       }
       else {

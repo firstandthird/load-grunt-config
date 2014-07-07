@@ -37,33 +37,32 @@ module.exports = function(grunt, options) {
     console.log(JSON.stringify(config, null, 2));
     process.exit(0);
   }
-  else {
-    if (opts.init) {
-      grunt.initConfig(config);
-    }
+  
+  if (opts.init) {
+    grunt.initConfig(config);
+  }
 
-    if (opts.jitGrunt === false && opts.loadGruntTasks) {
-      require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
-    } else if (opts.jitGrunt) {
-      require('jit-grunt')(grunt, opts.jitGrunt);
-    }
+  if (opts.jitGrunt === false && opts.loadGruntTasks) {
+    require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
+  } else if (opts.jitGrunt) {
+    require('jit-grunt')(grunt, opts.jitGrunt);
+  }
 
-    if (config.aliases) {
-      var getTaskRunner = function (tasks) {
-        return function () {
-          grunt.task.run(tasks);
-        };
+  if (config.aliases) {
+    var getTaskRunner = function (tasks) {
+      return function () {
+        grunt.task.run(tasks);
       };
+    };
 
-      for (var taskName in config.aliases) {
-        var task = config.aliases[taskName];
+    for (var taskName in config.aliases) {
+      var task = config.aliases[taskName];
 
-        if (typeof task === 'string' || Array.isArray(task)){
-          grunt.registerTask(taskName, task);
-        }
-        else {
-          grunt.registerTask(taskName, task.description, getTaskRunner(task.tasks));
-        }
+      if (typeof task === 'string' || Array.isArray(task)){
+        grunt.registerTask(taskName, task);
+      }
+      else {
+        grunt.registerTask(taskName, task.description, getTaskRunner(task.tasks));
       }
     }
   }

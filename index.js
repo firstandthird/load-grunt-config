@@ -33,6 +33,10 @@ module.exports = function(grunt, options) {
 
   config = _.merge({}, config, opts.data);
 
+  if (typeof options.postProcess === 'function') {
+    options.postProcess(config);
+  }
+
   if (opts.init) {
     grunt.initConfig(config);
   }

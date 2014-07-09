@@ -16,7 +16,7 @@ suite('index', function() {
     registerTask: sinon.stub()
   };
 
-  var fixture = require('./fixtures/output');
+  var fixture = require('./fixtures/testconfig');
   var fixtureWithPackage = _.cloneDeep(fixture);
   fixtureWithPackage.package = require('../package.json');
 
@@ -224,7 +224,7 @@ suite('index', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config'
       });
-      assert.equal(grunt.registerTask.callCount, 2);
+      assert.equal(grunt.registerTask.callCount, 4);
       var args = grunt.registerTask.args[0];
       assert.equal(args[0], 'default');
       assert.deepEqual(args[1], ['test']);
@@ -233,13 +233,32 @@ suite('index', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config'
       });
-      assert.equal(grunt.registerTask.callCount, 2);
+      assert.equal(grunt.registerTask.callCount, 4);
 
       var args = grunt.registerTask.args[1];
 
       assert.equal(args[0], 'anotherTask');
       assert.equal(args[1], 'This is an awesome task');
       assert.equal(typeof args[2], 'function');
+    });
+
+    test('should register function task', function () {
+      loadGruntConfig(grunt, {});
+      assert.equal(grunt.registerTask.callCount, 4);
+      var args = grunt.registerTask.args[2];
+      assert.equal(args[0], 'functionTask');
+      assert.equal(typeof args[1], 'function');
+      assert.equal(args[1].toString(), 'function () {}');
+    });
+
+    test('should register function task with description', function () {
+      loadGruntConfig(grunt, {});
+      assert.equal(grunt.registerTask.callCount, 4);
+      var args = grunt.registerTask.args[3];
+      assert.equal(args[0], 'functionTaskWithDescription');
+      assert.equal(args[1], 'This is a function task with description');
+      assert.equal(typeof args[2], 'function');
+      assert.equal(args[2].toString(), 'function () {}');
     });
   });
 

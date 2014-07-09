@@ -118,6 +118,15 @@ suite('index', function() {
       assert.equal(config.package.name, 'load-grunt-config');
     });
 
+    test('should call postProcess to allow manipulation of config', function() {
+      var config = loadGruntConfig(grunt, {
+        postProcess: function(config) {
+          config.post = true;
+        }
+      });
+      assert.equal(config.post, true);
+    });
+
   });
 
   suite('grunt.initConfig', function() {

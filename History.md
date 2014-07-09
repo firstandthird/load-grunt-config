@@ -1,4 +1,9 @@
 
+0.12.0 / 2014-07-07 
+==================
+
+  * support postProcess option to change config before running through grunt
+
 0.11.0 / 2014-07-06 
 ==================
 

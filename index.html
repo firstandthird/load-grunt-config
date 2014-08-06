@@ -72,7 +72,8 @@
             pattern: <span class="string">'grunt-*'</span>,
             config: require(<span class="string">'./package.json'</span>),
             scope: <span class="string">'devDependencies'</span>
-        }
+        },
+        postProcess: <span class="function"><span class="keyword">function</span><span class="params">(config)</span> {</span>} <span class="comment">//can post process config object before it gets passed to grunt</span>
     });
 
 };</code></pre>
@@ -173,6 +174,9 @@
 <pre><code class="lang-yaml"><span class="method">jshint:</span>
   <span class="method">files:</span>
     - <span class="string">'*.js'</span>
+<span class="method">jshint__test:</span>
+  <span class="method">files:</span>
+    - <span class="string">'test/*.js'</span>
 <span class="method">watch:</span>
   <span class="method">files:</span>
     - <span class="string">'*.js'</span>
@@ -185,6 +189,11 @@
     scripts: {
       files: [
         <span class="string">'*.js'</span>
+      ]
+    },
+    scripts_test: {
+      files: [
+        <span class="string">'test/*.js'</span>
       ]
     }
   },
@@ -199,6 +208,13 @@
     }
   }
 }</code></pre>
+<h3>Debugging</h3>
+<p>If you pass the parameter <code>--config-debug</code>, <code>load-grunt-config</code> will output the whole object it will pass
+to Grunt, which can be useful for debugging purposes or when asking for help.
+
+</p>
+<p>Note that this won&#39;t run grunt at all and no tasks would be run, nor loaded.
+</p>
 
       <div class="footer">
         <div class="built-with">Built with <a href="https://github.com/jgallen23/ghpage">ghpage</a></div>

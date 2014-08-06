@@ -164,6 +164,9 @@ Filename: `/config/scripts-tasks.yaml`
 jshint:
   files:
     - '*.js'
+jshint__test:
+  files:
+    - 'test/*.js'
 watch:
   files:
     - '*.js'
@@ -178,6 +181,11 @@ This would be the equivalent in your `Gruntfile.js`:
     scripts: {
       files: [
         '*.js'
+      ]
+    },
+    scripts_test: {
+      files: [
+        'test/*.js'
       ]
     }
   },

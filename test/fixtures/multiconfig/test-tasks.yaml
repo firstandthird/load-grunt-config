@@ -3,6 +3,9 @@ aliases:
 jshint:
   files:
     - '*.js'
+jshint__blah:
+  files:
+    - 'test/*.js'
 watch:
   files:
     - '*.js'

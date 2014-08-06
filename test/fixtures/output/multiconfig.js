@@ -9,6 +9,11 @@ module.exports = {
       files: [
         '*.js'
       ]
+    },
+    test_blah: {
+      files: [
+        'test/*.js'
+      ]
     }
   },
   watch: {

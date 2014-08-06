@@ -1,4 +1,10 @@
 
+0.13.0 / 2014-08-06 
+==================
+
+  * ability to have multiple targets in config grouping
+  * added --config-debug support
+
 0.12.0 / 2014-07-07 
 ==================
 

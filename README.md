@@ -194,4 +194,9 @@ This would be the equivalent in your `Gruntfile.js`:
 }
 ```
 
+### Debugging
 
+If you pass the parameter `--config-debug`, `load-grunt-config` will output the whole object it will pass
+to Grunt, which can be useful for debugging purposes or when asking for help.
+
+Note that this won't run grunt at all and no tasks would be run, nor loaded.

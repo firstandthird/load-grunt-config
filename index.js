@@ -14,6 +14,7 @@ var defaults = {
 };
 
 module.exports = function(grunt, options) {
+  var debugOnly = process.argv.indexOf('--config-debug') > -1;
 
   options = options || {};
   if (options.config) {
@@ -28,10 +29,14 @@ module.exports = function(grunt, options) {
     opts.data.package = packageData;
   }
 
-
   var config = gruntConfig(grunt, opts);
 
   config = _.merge({}, config, opts.data);
+
+  if (debugOnly){
+    console.log(JSON.stringify(config, null, 2));
+    process.exit(0);
+  }
 
   if (typeof options.postProcess === 'function') {
     options.postProcess(config);
@@ -67,5 +72,4 @@ module.exports = function(grunt, options) {
   }
 
   return config;
-
 };

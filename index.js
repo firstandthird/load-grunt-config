@@ -61,12 +61,14 @@ module.exports = function(grunt, options) {
 
     for (var taskName in config.aliases) {
       var task = config.aliases[taskName];
+      var taskRunner;
 
-      if (typeof task === 'string' || Array.isArray(task)){
+      if (typeof task === 'string' || typeof task === 'function' || Array.isArray(task)){
         grunt.registerTask(taskName, task);
       }
       else {
-        grunt.registerTask(taskName, task.description, getTaskRunner(task.tasks));
+        taskRunner = typeof task.tasks === 'function' ? task.tasks : getTaskRunner(task.tasks);
+        grunt.registerTask(taskName, task.description, taskRunner);
       }
     }
   }

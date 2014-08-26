@@ -30,11 +30,12 @@
     "proxyquire": "^0.5.3"
   },
   "dependencies": {
+    "async": "~0.2.10",
     "glob": "~3.2.6",
+    "jit-grunt": "~0.7.0",
     "js-yaml": "~3.0.1",
     "load-grunt-tasks": "~0.3.0",
-    "jit-grunt": "~0.7.0",
     "lodash-node": "~2.4.1",
-    "async": "~0.2.10"
+    "parse-dir": "0.0.3"
   }
 }

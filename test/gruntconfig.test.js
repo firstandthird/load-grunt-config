@@ -21,7 +21,7 @@ suite('gruntConfig', function() {
     assert.deepEqual(config, expected);
   });
 
-  test('overridePath', function() {
+  test('single overridePath as string', function() {
 
     var grunt = {};
     var options = {
@@ -36,6 +36,46 @@ suite('gruntConfig', function() {
 
     var expectedClone = _.clone(expected, true);
     expectedClone.jsobj.jsobjFile.options.filename = 'override';
+    assert.deepEqual(config, expectedClone);
+
+  });
+
+  test('single overridePath as Array<string>', function() {
+
+    var grunt = {};
+    var options = {
+      configPath: __dirname+'/config',
+      overridePath: [__dirname+'/config/override'],
+      data: {
+        test: 1
+      }
+    };
+
+    var config = gruntConfig(grunt, options);
+
+    var expectedClone = _.clone(expected, true);
+    expectedClone.jsobj.jsobjFile.options.filename = 'override';
+    assert.deepEqual(config, expectedClone);
+
+  });
+
+  test('multiple overridePath as Array<string>', function () {
+    var grunt = {};
+    var options = {
+      configPath: __dirname+'/config',
+      overridePath: [
+        __dirname+'/config/override',
+        __dirname+'/config/another-override',
+      ],
+      data: {
+        test: 1
+      }
+    };
+
+    var config = gruntConfig(grunt, options);
+
+    var expectedClone = _.clone(expected, true);
+    expectedClone.jsobj.jsobjFile.options.filename = 'another-override';
     assert.deepEqual(config, expectedClone);
 
   });

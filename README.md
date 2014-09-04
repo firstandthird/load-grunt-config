@@ -35,7 +35,7 @@ Gruntfile.js with options
 ```javascript
 module.exports = function(grunt) {
 	var path = require('path');
-	
+
 	require('load-grunt-config')(grunt, {
 		configPath: path.join(process.cwd(), 'grunt'), //path to task.js files, defaults to grunt dir
 		init: true, //auto grunt.initConfig
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
 
 	require('load-grunt-config')(grunt, {
 		// ...
-		jitGrunt: { 
+		jitGrunt: {
 			//here you can pass options to jit-grunt (or just jitGrunt: true)
 		}
 	});
@@ -151,6 +151,24 @@ module.exports = function(grunt) {
   });
 
 };
+```
+
+`overridePath` accepts single string as well as array of strings.  It means that you can compose config using multiple folders.  For example:
+
+```javascript
+module.exports = function(grunt) {
+
+  require('load-grunt-config')(grunt, {
+    configPath: path.join(process.cwd(), 'vendor'),
+    overridePath: [
+      path.join(process.cwd(), 'base-target'),
+      path.join(process.cwd(), 'variant-1'),
+      path.join(process.cwd(), 'variant-n')
+    ]
+  });
+
+};
+
 ```
 
 ### Config Grouping

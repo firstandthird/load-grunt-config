@@ -49,7 +49,7 @@ module.exports = function(grunt, options) {
   if (opts.jitGrunt === false && opts.loadGruntTasks) {
     require('load-grunt-tasks')(grunt, opts.loadGruntTasks);
   } else if (opts.jitGrunt) {
-    require('jit-grunt')(grunt, opts.jitGrunt);
+    require('jit-grunt')(grunt, opts.jitGrunt.staticMappings)(opts.jitGrunt);
   }
 
   if (config.aliases) {

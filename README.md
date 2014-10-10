@@ -39,12 +39,15 @@ module.exports = function(grunt) {
 	require('load-grunt-config')(grunt, {
 		// path to task.js files, defaults to grunt dir
 		configPath: path.join(process.cwd(), 'grunt'),
+
 		// auto grunt.initConfig
 		init: true,
+
 		// data passed into config.  Can use with <%= test %>
 		data: {
 			test: false
 		},
+
 		// can optionally pass options to load-grunt-tasks.
 		// If you set to false, it will disable auto loading tasks.
 		loadGruntTasks: {
@@ -53,6 +56,7 @@ module.exports = function(grunt) {
 			config: require('./package.json'),
 			scope: 'devDependencies'
 		},
+
 		//can post process config object before it gets passed to grunt
 		postProcess: function(config) {}
 	});
@@ -66,13 +70,19 @@ module.exports = function(grunt) {
 
 	require('load-grunt-config')(grunt, {
 		// ...
-		jitGrunt: { 
-			// here you can pass options to jit-grunt (or just jitGrunt: true)
+		jitGrunt: {
+		    // here you can pass options to jit-grunt (or just jitGrunt: true)
+		    staticMappings: {
+		        // here you can specify static mappings, for example:
+		        sprite: 'grunt-spritesmith',
+                hello: 'custom/say-hello.js'
+		    }
 		}
 	});
 
 };
 ```
+
 Note: if you have problems with auto loading of some tasks please check [jit-grunt#static-mappings](https://github.com/shootaroo/jit-grunt#static-mappings)
 
 ###Grunt tasks files

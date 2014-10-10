@@ -1,6 +1,6 @@
 {
   "name": "load-grunt-config",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Grunt plugin that lets you break up your Gruntfile config by task",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "glob": "~3.2.6",
     "js-yaml": "~3.0.1",
     "load-grunt-tasks": "~0.3.0",
-    "jit-grunt": "~0.7.0",
+    "jit-grunt": "~0.8.0",
     "lodash-node": "~2.4.1",
     "async": "~0.2.10"
   }

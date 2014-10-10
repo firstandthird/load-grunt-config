@@ -25,7 +25,10 @@ suite('index', function() {
   };
   var gruntConfigSpy = sinon.spy(gruntConfigStub);
   var loadGruntTasksSpy = sinon.spy();
-  var jitGruntSpy = sinon.spy();
+  var jitGruntStub = function(grunt, mappings) {
+    return function(options) {};
+  };
+  var jitGruntSpy = sinon.spy(jitGruntStub);
 
   setup(function(done) {
     original = loadGruntConfig;
@@ -222,8 +225,10 @@ suite('index', function() {
     test('should not call if jitGrunt: false and gruntLoadTasks: false', function() {
       loadGruntConfig(grunt, {
         configPath: 'test/config',
+        loadGruntTasks: false,
         jitGrunt: false
       });
+      assert.ok(loadGruntTasksSpy.notCalled);
       assert.ok(jitGruntSpy.notCalled);
     });
   });

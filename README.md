@@ -60,12 +60,18 @@ module.exports = function(grunt) {
 	require('load-grunt-config')(grunt, {
 		// ...
 		jitGrunt: {
-			//here you can pass options to jit-grunt (or just jitGrunt: true)
+		    // here you can pass options to jit-grunt (or just jitGrunt: true)
+		    staticMappings: {
+		        // here you can specify static mappings, for example:
+		        sprite: 'grunt-spritesmith',
+                hello: 'custom/say-hello.js'
+		    }
 		}
 	});
 
 };
 ```
+
 Note: if you have problems with auto loading of some tasks please check [jit-grunt#static-mappings](https://github.com/shootaroo/jit-grunt#static-mappings)
 
 ###Grunt tasks files

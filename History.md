@@ -1,4 +1,11 @@
 
+0.14.0 / 2014-10-19 
+==================
+
+  * Update README.md (tawez)
+  * configPath accepts array of strings (tawez)
+  * overridePath accepts array of strings (tawez)
+
 0.13.2 / 2014-10-02 
 ==================
 

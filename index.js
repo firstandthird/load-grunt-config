@@ -38,7 +38,19 @@ module.exports = function(grunt, options) {
   }
 
   if (debugOnly){
+    console.log('CONFIG:');
+    console.log('==============================');
     console.log(JSON.stringify(config, null, 2));
+    console.log('');
+    if (config.aliases) {
+      console.log('ALIASES:');
+      console.log('==============================');
+      for (var cTaskName in config.aliases) {
+        var cTask = config.aliases[cTaskName];
+        console.log(cTaskName + ' ' + JSON.stringify(cTask));
+      }
+      console.log('');
+    }
     process.exit(0);
   }
 

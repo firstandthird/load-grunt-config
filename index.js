@@ -31,6 +31,10 @@ module.exports = function(grunt, options) {
 
   var config = gruntConfig(grunt, opts);
 
+  if (typeof options.preMerge === 'function') {
+    options.preMerge(config, opts.data);
+  }
+
   config = _.merge({}, config, opts.data);
 
   if (typeof options.postProcess === 'function') {

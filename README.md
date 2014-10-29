@@ -58,7 +58,10 @@ module.exports = function(grunt) {
 		},
 
 		//can post process config object before it gets passed to grunt
-		postProcess: function(config) {}
+		postProcess: function(config) {},
+
+		//allows to manipulate the config object before it gets merged with the data object
+		preMerge: function(config, data) {}
 	});
 
 };

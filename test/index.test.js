@@ -130,6 +130,19 @@ suite('index', function() {
       assert.equal(config.post, true);
     });
 
+    test('should call preMerge to allow manipulation of config and data', function() {
+      var spy = sinon.spy();
+      loadGruntConfig(grunt, {
+        preMerge: spy
+      });
+
+      assert.equal(spy.callCount, 1);
+      var args = spy.getCall(0).args;
+      assert.equal(args.length, 2);
+      assert.equal(typeof args[0], 'object');
+      assert.equal(typeof args[1], 'object');
+    });
+
   });
 
   suite('grunt.initConfig', function() {

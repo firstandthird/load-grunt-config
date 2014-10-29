@@ -33,13 +33,13 @@ module.exports = function(grunt, options) {
 
   config = _.merge({}, config, opts.data);
 
+  if (typeof options.postProcess === 'function') {
+    options.postProcess(config);
+  }
+
   if (debugOnly){
     console.log(JSON.stringify(config, null, 2));
     process.exit(0);
-  }
-
-  if (typeof options.postProcess === 'function') {
-    options.postProcess(config);
   }
 
   if (opts.init) {

@@ -1,4 +1,10 @@
 
+0.15.0 / 2014-10-29 
+==================
+
+  * added aliases to config-debug output. #93
+  * moved config-debug output to after postProcess. #93
+
 0.14.0 / 2014-10-19 
 ==================
 

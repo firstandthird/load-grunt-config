@@ -1,4 +1,27 @@
 
+0.16.0 / 2014-10-29 
+==================
+
+  * added preMerge hook.  #94
+
+0.15.0 / 2014-10-29 
+==================
+
+  * added aliases to config-debug output. #93
+  * moved config-debug output to after postProcess. #93
+
+0.14.0 / 2014-10-19 
+==================
+
+  * Update README.md (tawez)
+  * configPath accepts array of strings (tawez)
+  * overridePath accepts array of strings (tawez)
+
+0.13.2 / 2014-10-02 
+==================
+
+  * fixed issue with passing options to jit-grunt
+
 0.13.1 / 2014-08-20 
 ==================
 

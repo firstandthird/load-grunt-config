@@ -35,19 +35,33 @@ Gruntfile.js with options
 ```javascript
 module.exports = function(grunt) {
 	var path = require('path');
-	
+
 	require('load-grunt-config')(grunt, {
-		configPath: path.join(process.cwd(), 'grunt'), //path to task.js files, defaults to grunt dir
-		init: true, //auto grunt.initConfig
-		data: { //data passed into config.  Can use with <%= test %>
+		// path to task.js files, defaults to grunt dir
+		configPath: path.join(process.cwd(), 'grunt'),
+
+		// auto grunt.initConfig
+		init: true,
+
+		// data passed into config.  Can use with <%= test %>
+		data: {
 			test: false
 		},
-		loadGruntTasks: { //can optionally pass options to load-grunt-tasks.  If you set to false, it will disable auto loading tasks.
+
+		// can optionally pass options to load-grunt-tasks.
+		// If you set to false, it will disable auto loading tasks.
+		loadGruntTasks: {
+		
 			pattern: 'grunt-*',
 			config: require('./package.json'),
 			scope: 'devDependencies'
 		},
-		postProcess: function(config) {} //can post process config object before it gets passed to grunt
+
+		//can post process config object before it gets passed to grunt
+		postProcess: function(config) {},
+
+		//allows to manipulate the config object before it gets merged with the data object
+		preMerge: function(config, data) {}
 	});
 
 };
@@ -136,12 +150,88 @@ module.exports =
 
 If your `grunt/` folder contains an `aliases.(js|.json|yaml|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 
-grunt/aliases.yaml
+The following examples show the same `aliasses` definition written in various formats
+
+Example yaml file - `grunt/aliases.yaml`
 ```yaml
-default:
+default: []
+
+lint:
   - 'jshint'
+  - 'csslint'
+  
+build:
+  - 'lint'
   - 'mocha'
   - 'notify'
+```
+
+Example json file - `grunt/aliases.json`
+```json
+{
+  "default": [],
+  "lint": [
+    "jshint",
+    "csslint"
+  ],
+  "build": [
+    "lint",
+    "mocha",
+    "notify"
+  ]
+}
+```
+
+Example JavaScript file returning an object - `grunt/aliases.js`
+```javascript
+module.exports = {
+  'default': [],
+  'lint': [
+    'jshint',
+    'csslint'
+  ],
+  'build': [
+    'lint',
+    'mocha',
+    'notify'
+  ]
+};
+```
+
+Example JavaScript file returning a function `grunt/aliases.js`
+Useful if there is need to compute something before return.
+
+```javascript
+module.exports = function (grunt, options) {
+  // computation...
+  return {
+    'default': [],
+    'lint': [
+      'jshint',
+      'csslint'
+    ],
+    'build': [
+      'lint',
+      'mocha',
+      'notify'
+    ]
+  };
+};
+```
+
+Example coffee file grunt/aliases.coffee
+```coffee
+module.exports =
+  default: []
+  lint: [
+    'jshint'
+    'csslint'
+  ]
+  build: [
+    'lint'
+    'mocha'
+    'notify'
+  ]
 ```
 
 ### Custom Config
@@ -157,6 +247,26 @@ module.exports = function(grunt) {
   });
 
 };
+```
+
+`configPath` and `overridePath` accept single string as well as array of strings.  It means that you can compose config using multiple folders.  For example:
+
+```javascript
+module.exports = function(grunt) {
+
+  require('load-grunt-config')(grunt, {
+    configPath: [
+      path.join(process.cwd(), 'vendor'),
+      path.join(process.cwd(), 'base-target')
+    ],
+    overridePath: [
+      path.join(process.cwd(), 'variant-1'),
+      path.join(process.cwd(), 'variant-n')
+    ]
+  });
+
+};
+
 ```
 
 ### Config Grouping

@@ -31,15 +31,31 @@ module.exports = function(grunt, options) {
 
   var config = gruntConfig(grunt, opts);
 
-  config = _.merge({}, config, opts.data);
-
-  if (debugOnly){
-    console.log(JSON.stringify(config, null, 2));
-    process.exit(0);
+  if (typeof options.preMerge === 'function') {
+    options.preMerge(config, opts.data);
   }
+
+  config = _.merge({}, config, opts.data);
 
   if (typeof options.postProcess === 'function') {
     options.postProcess(config);
+  }
+
+  if (debugOnly){
+    console.log('CONFIG:');
+    console.log('==============================');
+    console.log(JSON.stringify(config, null, 2));
+    console.log('');
+    if (config.aliases) {
+      console.log('ALIASES:');
+      console.log('==============================');
+      for (var cTaskName in config.aliases) {
+        var cTask = config.aliases[cTaskName];
+        console.log(cTaskName + ' ' + JSON.stringify(cTask));
+      }
+      console.log('');
+    }
+    process.exit(0);
   }
 
   if (opts.init) {

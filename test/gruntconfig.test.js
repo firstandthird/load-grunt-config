@@ -1,7 +1,7 @@
 /* global suite, test */
 var assert = require('assert');
 var gruntConfig = require('../lib/gruntconfig');
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 var expected = require('./fixtures/output');
 

@@ -3,7 +3,7 @@ var assert = require('assert');
 var proxyquire = require('proxyquire');
 var sinon = require('sinon');
 var path = require('path');
-var _ = require('lodash-node');
+var _ = require('lodash');
 var loadGruntConfig = require('../');
 
 

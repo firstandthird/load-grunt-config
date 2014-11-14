@@ -234,6 +234,19 @@ module.exports =
   ]
 ```
 
+You can specify a task description - example JavaScript file `grunt/aliases.js`
+```javascript
+module.exports = {
+  'lint': {
+    description: 'Lint css and js',
+    tasks: [
+      'jshint',
+      'csslint'
+    ]
+  }
+};
+```
+
 ### Custom Config
 
 There are certain scenarios where you might have a base config for your team, and you want to be able to override some of the config based on your personal setup.  You can do that with the `overridePath` property.  In this case, the library will merge the two, with the override path taking priority.  For example:

@@ -1,3 +1,4 @@
 yamlFile:
   options:
     filename: read.yaml
+    regexp: !!js/regexp /(\d{1,})\%/

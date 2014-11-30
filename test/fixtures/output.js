@@ -37,21 +37,24 @@ module.exports = {
   jsonfile: {
     jsonFile: {
       options: {
-        filename: 'read.json'
+        filename: 'read.json',
+        regexp: '/(\\d{1,})\\%//'
       }
     }
   },
   yamlfile: {
     yamlFile: {
       options: {
-        filename: 'read.yaml'
+        filename: 'read.yaml',
+        regexp: '/(\\d{1,})\\%//'
       }
     }
   },
   ymlfile: {
     ymlFile: {
       options: {
-        filename: 'read.yml'
+        filename: 'read.yml',
+        regexp: '/(\\d{1,})\\%//'
       }
     }
   }

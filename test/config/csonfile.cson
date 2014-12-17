@@ -1,0 +1,3 @@
+csonFile:
+  options:
+    filename: "read.cson"

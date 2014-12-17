@@ -48,6 +48,9 @@ module.exports = function(grunt) {
 			test: false
 		},
 
+		// use different function to merge config files
+		mergeFunction: require('recursive-merge')
+
 		// can optionally pass options to load-grunt-tasks.
 		// If you set to false, it will disable auto loading tasks.
 		loadGruntTasks: {

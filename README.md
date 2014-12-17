@@ -8,6 +8,7 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks). (Optionally it can use [jit-grunt](https://github.com/shootaroo/jit-grunt))
 - Auto expose package.json (`<%= package.name %>`).
 - Support for YAML files.
+- Support for CSON files.
 - Support for coffeescript files.
 - Support for returning a function.
 - [Easily register task aliases](#aliases) with `aliases.(js|json|yaml|coffee)`.
@@ -90,7 +91,7 @@ Note: if you have problems with auto loading of some tasks please check [jit-gru
 
 ###Grunt tasks files
 
-Here's what the files in your `grunt/` folder could look like.  You can use either .js, .json, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
+Here's what the files in your `grunt/` folder could look like.  You can use either .js, .json, .yaml, .cson, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
 Example js file returning an object - `grunt/watch.js`
 ```javascript
@@ -148,7 +149,7 @@ module.exports =
 
 ###Aliases
 
-If your `grunt/` folder contains an `aliases.(js|.json|yaml|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
+If your `grunt/` folder contains an `aliases.(js|.json|yaml|cson|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 
 The following examples show the same `aliasses` definition written in various formats
 

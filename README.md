@@ -61,6 +61,7 @@ module.exports = function(grunt) {
 		postProcess: function(config) {},
 
 		//allows to manipulate the config object before it gets merged with the data object
+		//if set to false, no merging will happen 
 		preMerge: function(config, data) {}
 	});
 

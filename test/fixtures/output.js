@@ -41,6 +41,13 @@ module.exports = {
       }
     }
   },
+  csonfile: {
+    csonFile: {
+      options: {
+        filename: 'read.cson'
+      }
+    }
+  },  
   yamlfile: {
     yamlFile: {
       options: {

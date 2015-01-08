@@ -253,7 +253,8 @@ There are certain scenarios where you might have a base config for your team, an
 
 ```javascript
 module.exports = function(grunt) {
-
+  var path = require('path');
+  
   require('load-grunt-config')(grunt, {
     configPath: path.join(process.cwd(), 'vendor'),
     overridePath: path.join(process.cwd(), 'config-'+process.env.USER)
@@ -266,7 +267,8 @@ module.exports = function(grunt) {
 
 ```javascript
 module.exports = function(grunt) {
-
+  var path = require('path');
+  
   require('load-grunt-config')(grunt, {
     configPath: [
       path.join(process.cwd(), 'vendor'),

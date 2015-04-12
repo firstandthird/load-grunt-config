@@ -11,7 +11,7 @@
     "url": "git://github.com/firstandthird/load-grunt-config.git"
   },
   "keywords": [
-    "gruntplugin", "yaml", "grunt", "config"
+    "gruntplugin", "yaml", "cson", "grunt", "config"
   ],
   "author": "First + Third",
   "license": "MIT",
@@ -30,11 +30,12 @@
     "proxyquire": "^0.5.3"
   },
   "dependencies": {
+    "async": "~0.2.10",
+    "cson": "~1.6.2",
     "glob": "~3.2.6",
+    "jit-grunt": "~0.8.0",
     "js-yaml": "~3.0.1",
     "load-grunt-tasks": "~0.3.0",
-    "jit-grunt": "~0.8.0",
-    "lodash-node": "~2.4.1",
-    "async": "~0.2.10"
+    "lodash-node": "~2.4.1"
   }
 }

@@ -21,6 +21,11 @@ suite('readfile', function() {
     assert.equal(yaml.ymlFile.options.filename, 'read.yml');
   });
 
+  test('read cson file', function() {
+    var cson = readfile(__dirname+'/config/csonfile.cson');
+    assert.equal(cson.csonFile.options.filename, 'read.cson');
+  });
+
   test('read json file', function() {
     var json = readfile(__dirname+'/config/jsonfile.json');
     assert.equal(json.jsonFile.options.filename, 'read.json');

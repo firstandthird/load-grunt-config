@@ -1,5 +1,6 @@
 /* global suite, test */
 var assert = require('assert');
+var sinon = require('sinon');
 var gruntConfig = require('../lib/gruntconfig');
 var _ = require('lodash-node');
 
@@ -219,5 +220,19 @@ suite('gruntConfig', function() {
     expectedClone.jsobj.jsobjFile.options.filename = 'override';
     assert.deepEqual(config, expectedClone);
   });
+
+  test('uses specified mergeFunction', function() {
+    var grunt = {};
+    var spy = sinon.spy();
+    var options = {
+      mergeFunction: spy,
+      configPath: [
+        __dirname + '/config'
+      ]
+    }
+    
+    gruntConfig(grunt, options);
+    assert.equal(spy.callCount, 8);
+  });  
 
 });

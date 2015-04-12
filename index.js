@@ -10,7 +10,8 @@ var defaults = {
   jitGrunt: false,
   loadGruntTasks: {
   },
-  data: {}
+  data: {},
+  mergeFunction: _.merge
 };
 
 module.exports = function(grunt, options) {

@@ -1,6 +1,7 @@
 /* global suite, test */
 
 var assert = require('assert');
+var sinon = require('sinon');
 var readConfigDir = require('../lib/readconfigdir');
 
 suite('readConfigDir', function() {
@@ -9,11 +10,22 @@ suite('readConfigDir', function() {
 
     var grunt = {};
     var options = {
-      test: 1
+      data: {test: 1}
     };
 
     var obj = readConfigDir(__dirname+'/config', grunt, options);
     assert.deepEqual(obj, require('./fixtures/output'));
+  });
+
+  test('uses specified mergeFunction', function() {
+    var grunt = {};
+    var spy = sinon.spy();
+    var options = {
+      mergeFunction: spy
+    }
+    
+    readConfigDir(__dirname+'/config', grunt, options);
+    assert.equal(spy.callCount, 7);
   });
 
   test('multiconfig', function() {

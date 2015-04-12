@@ -19,6 +19,7 @@ suite('readfile', function() {
   test('read yml file', function() {
     var yaml = readfile(__dirname+'/config/ymlfile.yml');
     assert.equal(yaml.ymlFile.options.filename, 'read.yml');
+    assert.equal(yaml.ymlFile.options.regexp, '/(\\d{1,})\\%/');
   });
 
   test('read cson file', function() {

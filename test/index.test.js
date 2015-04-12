@@ -298,6 +298,38 @@ suite('index', function() {
       assert.equal(args[0], 'aliasToFn');
       assert.equal(typeof args[1], 'function');
     });
+
+    test('should support aliases to functions with description', function () {
+      // Same strategy as before
+      var fnAliasFixture = {
+        aliases: {
+          aliasToFn: {
+            'description' : 'This is an awesome task',
+            'tasks' : function () { return "A function"; }
+          }
+        }
+      };
+
+      loadGruntConfig = proxyquire('../', {
+        './lib/gruntconfig': function(grunt, options) {
+          return fnAliasFixture;
+        },
+        'load-grunt-tasks': loadGruntTasksSpy,
+        'jit-grunt': jitGruntSpy
+      });
+
+      loadGruntConfig(grunt, {
+        configPath: 'test/config'
+      });
+
+      assert.equal(grunt.registerTask.callCount, 1);
+      var args = grunt.registerTask.args[0];
+
+      assert.equal(args[0], 'aliasToFn');
+      assert.equal(args[1], 'This is an awesome task');
+      assert.equal(typeof args[2], 'function');
+      assert.equal(args[2](), 'A function');
+    });
   });
 
 });

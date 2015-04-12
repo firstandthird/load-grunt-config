@@ -160,9 +160,11 @@ Example yaml file - `grunt/aliases.yaml`
 default: []
 
 lint:
-  - 'jshint'
-  - 'csslint'
-  
+  description: 'Helps to make our code better'
+  tasks:
+    - 'jshint'
+    - 'csslint'
+
 build:
   - 'lint'
   - 'mocha'

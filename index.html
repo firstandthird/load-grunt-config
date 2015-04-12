@@ -41,6 +41,7 @@
 <li>Auto load all grunt plugins.  Uses <a href="https://github.com/sindresorhus/load-grunt-tasks">load-grunt-tasks</a>. (Optionally it can use <a href="https://github.com/shootaroo/jit-grunt">jit-grunt</a>)</li>
 <li>Auto expose package.json (<code>&lt;%= package.name %&gt;</code>).</li>
 <li>Support for YAML files.</li>
+<li>Support for CSON files.</li>
 <li>Support for coffeescript files.</li>
 <li>Support for returning a function.</li>
 <li><a href="#aliases">Easily register task aliases</a> with <code>aliases.(js|json|yaml|coffee)</code>.</li>
@@ -63,17 +64,34 @@
     <span class="keyword">var</span> path = require(<span class="string">'path'</span>);
 
     require(<span class="string">'load-grunt-config'</span>)(grunt, {
-        configPath: path.join(process.cwd(), <span class="string">'grunt'</span>), <span class="comment">//path to task.js files, defaults to grunt dir</span>
-        init: <span class="literal">true</span>, <span class="comment">//auto grunt.initConfig</span>
-        data: { <span class="comment">//data passed into config.  Can use with &lt;%= test %&gt;</span>
+        <span class="comment">// path to task.js files, defaults to grunt dir</span>
+        configPath: path.join(process.cwd(), <span class="string">'grunt'</span>),
+
+        <span class="comment">// auto grunt.initConfig</span>
+        init: <span class="literal">true</span>,
+
+        <span class="comment">// data passed into config.  Can use with &lt;%= test %&gt;</span>
+        data: {
             test: <span class="literal">false</span>
         },
-        loadGruntTasks: { <span class="comment">//can optionally pass options to load-grunt-tasks.  If you set to false, it will disable auto loading tasks.</span>
+
+        <span class="comment">// use different function to merge config files</span>
+        mergeFunction: require(<span class="string">'recursive-merge'</span>)
+
+        <span class="comment">// can optionally pass options to load-grunt-tasks.</span>
+        <span class="comment">// If you set to false, it will disable auto loading tasks.</span>
+        loadGruntTasks: {
+
             pattern: <span class="string">'grunt-*'</span>,
             config: require(<span class="string">'./package.json'</span>),
             scope: <span class="string">'devDependencies'</span>
         },
-        postProcess: <span class="function"><span class="keyword">function</span><span class="params">(config)</span> {</span>} <span class="comment">//can post process config object before it gets passed to grunt</span>
+
+        <span class="comment">//can post process config object before it gets passed to grunt</span>
+        postProcess: <span class="function"><span class="keyword">function</span><span class="params">(config)</span> {</span>},
+
+        <span class="comment">//allows to manipulate the config object before it gets merged with the data object</span>
+        preMerge: <span class="function"><span class="keyword">function</span><span class="params">(config, data)</span> {</span>}
     });
 
 };</code></pre>
@@ -83,8 +101,13 @@
 
     require(<span class="string">'load-grunt-config'</span>)(grunt, {
         <span class="comment">// ...</span>
-        jitGrunt: { 
-            <span class="comment">//here you can pass options to jit-grunt (or just jitGrunt: true)</span>
+        jitGrunt: {
+            <span class="comment">// here you can pass options to jit-grunt (or just jitGrunt: true)</span>
+            staticMappings: {
+                <span class="comment">// here you can specify static mappings, for example:</span>
+                sprite: <span class="string">'grunt-spritesmith'</span>,
+                hello: <span class="string">'custom/say-hello.js'</span>
+            }
         }
     });
 
@@ -93,7 +116,7 @@
 
 </p>
 <h3>Grunt tasks files</h3>
-<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .json, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
+<p>Here&#39;s what the files in your <code>grunt/</code> folder could look like.  You can use either .js, .json, .yaml, .cson, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
 </p>
 <p>Example js file returning an object - <code>grunt/watch.js</code>
@@ -141,24 +164,125 @@
   <span class="attribute">options</span>:
     <span class="attribute">bare</span>: <span class="literal">true</span></code></pre>
 <h3>Aliases</h3>
-<p>If your <code>grunt/</code> folder contains an <code>aliases.(js|.json|yaml|coffee)</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
+<p>If your <code>grunt/</code> folder contains an <code>aliases.(js|.json|yaml|cson|coffee)</code> file, <code>load-grunt-config</code> will use that to define your tasks aliases (like <code>grunt.registerTask(&#39;default&#39;, [&#39;jshint&#39;]);</code>).
 
 </p>
-<p>grunt/aliases.yaml
+<p>The following examples show the same <code>aliasses</code> definition written in various formats
+
 </p>
-<pre><code class="lang-yaml"><span class="keyword">default</span>:
-  - <span class="comment">'jshint'</span>
-  - <span class="comment">'mocha'</span>
-  - <span class="comment">'notify'</span></code></pre>
+<p>Example yaml file - <code>grunt/aliases.yaml</code>
+</p>
+<pre><code class="lang-yaml"><span class="attribute">default</span>: <span class="string">[]</span>
+
+<span class="vhdl">lint:
+  description: <span class="attribute">'Helps</span> <span class="keyword">to</span> make our code better'
+  tasks:
+    - <span class="attribute">'jshint</span>'
+    - <span class="attribute">'csslint</span>'
+
+build:
+  - <span class="attribute">'lint</span>'
+  - <span class="attribute">'mocha</span>'
+  - <span class="attribute">'notify</span>'</span></code></pre>
+<p>Example json file - <code>grunt/aliases.json</code>
+</p>
+<pre><code class="lang-json">{
+  "<span class="attribute">default</span>": <span class="value">[]</span>,
+  "<span class="attribute">lint</span>": <span class="value">[
+    <span class="string">"jshint"</span>,
+    <span class="string">"csslint"</span>
+  ]</span>,
+  "<span class="attribute">build</span>": <span class="value">[
+    <span class="string">"lint"</span>,
+    <span class="string">"mocha"</span>,
+    <span class="string">"notify"</span>
+  ]
+</span>}</code></pre>
+<p>Example JavaScript file returning an object - <code>grunt/aliases.js</code>
+</p>
+<pre><code class="lang-javascript">module.exports = {
+  <span class="string">'default'</span>: [],
+  <span class="string">'lint'</span>: [
+    <span class="string">'jshint'</span>,
+    <span class="string">'csslint'</span>
+  ],
+  <span class="string">'build'</span>: [
+    <span class="string">'lint'</span>,
+    <span class="string">'mocha'</span>,
+    <span class="string">'notify'</span>
+  ]
+};</code></pre>
+<p>Example JavaScript file returning a function <code>grunt/aliases.js</code>
+Useful if there is need to compute something before return.
+
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(grunt, options)</span> {</span>
+  <span class="comment">// computation...</span>
+  <span class="keyword">return</span> {
+    <span class="string">'default'</span>: [],
+    <span class="string">'lint'</span>: [
+      <span class="string">'jshint'</span>,
+      <span class="string">'csslint'</span>
+    ],
+    <span class="string">'build'</span>: [
+      <span class="string">'lint'</span>,
+      <span class="string">'mocha'</span>,
+      <span class="string">'notify'</span>
+    ]
+  };
+};</code></pre>
+<p>Example coffee file grunt/aliases.coffee
+</p>
+<pre><code class="lang-coffee">module.exports =
+  <span class="keyword">default</span>: []
+  lint: [
+    <span class="comment">'jshint'</span>
+    <span class="comment">'csslint'</span>
+  ]
+  build: [
+    <span class="comment">'lint'</span>
+    <span class="comment">'mocha'</span>
+    <span class="comment">'notify'</span>
+  ]</code></pre>
+<p>You can specify a task description - example JavaScript file <code>grunt/aliases.js</code>
+</p>
+<pre><code class="lang-javascript">module.exports = {
+  <span class="string">'lint'</span>: {
+    description: <span class="string">'Lint css and js'</span>,
+    tasks: [
+      <span class="string">'jshint'</span>,
+      <span class="string">'csslint'</span>
+    ]
+  }
+};</code></pre>
 <h3>Custom Config</h3>
 <p>There are certain scenarios where you might have a base config for your team, and you want to be able to override some of the config based on your personal setup.  You can do that with the <code>overridePath</code> property.  In this case, the library will merge the two, with the override path taking priority.  For example:
 
 </p>
 <pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+  <span class="keyword">var</span> path = require(<span class="string">'path'</span>);
 
   require(<span class="string">'load-grunt-config'</span>)(grunt, {
     configPath: path.join(process.cwd(), <span class="string">'vendor'</span>),
     overridePath: path.join(process.cwd(), <span class="string">'config-'</span>+process.env.USER)
+  });
+
+};</code></pre>
+<p><code>configPath</code> and <code>overridePath</code> accept single string as well as array of strings.  It means that you can compose config using multiple folders.  For example:
+
+</p>
+<pre><code class="lang-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+  <span class="keyword">var</span> path = require(<span class="string">'path'</span>);
+
+  require(<span class="string">'load-grunt-config'</span>)(grunt, {
+    configPath: [
+      path.join(process.cwd(), <span class="string">'vendor'</span>),
+      path.join(process.cwd(), <span class="string">'base-target'</span>)
+    ],
+    overridePath: [
+      path.join(process.cwd(), <span class="string">'variant-1'</span>),
+      path.join(process.cwd(), <span class="string">'variant-n'</span>)
+    ]
   });
 
 };</code></pre>

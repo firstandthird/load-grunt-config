@@ -1,4 +1,18 @@
 
+0.17.0 / 2015-04-12
+==================
+
+  * Adds a small example for adding a description to the yaml
+  * Aliases to functions when the alias is an object with a description
+  * Updating Readme
+  * Configurable function for config merge
+  * Fixed lookup for CSON files in directory
+  * Updated readme regarding CSON files support
+  * Support CSON config files
+  * load js-yaml full schema support to allow regexp
+  * Update README.md: add alias task description
+
+
 0.16.0 / 2014-10-29 
 ==================
 

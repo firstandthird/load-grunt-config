@@ -10,7 +10,8 @@ var defaults = {
   jitGrunt: false,
   loadGruntTasks: {
   },
-  data: {}
+  data: {},
+  mergeFunction: _.merge
 };
 
 module.exports = function(grunt, options) {
@@ -78,11 +79,22 @@ module.exports = function(grunt, options) {
     for (var taskName in config.aliases) {
       var task = config.aliases[taskName];
 
-      if (typeof task === 'string' || typeof task === 'function' || Array.isArray(task)){
+      // The task variable contains the task to register, the alias has no description
+      if (typeof task === 'string' || typeof task === 'function' || Array.isArray(task)) {
         grunt.registerTask(taskName, task);
-      }
-      else {
-        grunt.registerTask(taskName, task.description, getTaskRunner(task.tasks));
+
+      // The task variable is an object with two properties: tasks and description 
+      } else {
+
+        //  * The tasks property is a function, it can be register directly using registerTask
+        if (typeof task.tasks === 'function') {
+          grunt.registerTask(taskName, task.description, task.tasks);
+
+        //  * The tasks property is not a function, it must be wrapped inside one
+        } else {
+          grunt.registerTask(taskName, task.description, getTaskRunner(task.tasks));  
+        }
+
       }
     }
   }

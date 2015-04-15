@@ -8,6 +8,7 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks). (Optionally it can use [jit-grunt](https://github.com/shootaroo/jit-grunt))
 - Auto expose package.json (`<%= package.name %>`).
 - Support for YAML files.
+- Support for CSON files.
 - Support for coffeescript files.
 - Support for returning a function.
 - [Easily register task aliases](#aliases) with `aliases.(js|json|yaml|coffee)`.
@@ -47,6 +48,9 @@ module.exports = function(grunt) {
 		data: {
 			test: false
 		},
+
+		// use different function to merge config files
+		mergeFunction: require('recursive-merge')
 
 		// can optionally pass options to load-grunt-tasks.
 		// If you set to false, it will disable auto loading tasks.
@@ -90,7 +94,7 @@ Note: if you have problems with auto loading of some tasks please check [jit-gru
 
 ###Grunt tasks files
 
-Here's what the files in your `grunt/` folder could look like.  You can use either .js, .json, .yaml, or .coffee - whatever you prefer and you can mix and match as you see fit.
+Here's what the files in your `grunt/` folder could look like.  You can use either .js, .json, .yaml, .cson, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
 Example js file returning an object - `grunt/watch.js`
 ```javascript
@@ -148,7 +152,7 @@ module.exports =
 
 ###Aliases
 
-If your `grunt/` folder contains an `aliases.(js|.json|yaml|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
+If your `grunt/` folder contains an `aliases.(js|.json|yaml|cson|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 
 The following examples show the same `aliasses` definition written in various formats
 
@@ -157,9 +161,11 @@ Example yaml file - `grunt/aliases.yaml`
 default: []
 
 lint:
-  - 'jshint'
-  - 'csslint'
-  
+  description: 'Helps to make our code better'
+  tasks:
+    - 'jshint'
+    - 'csslint'
+
 build:
   - 'lint'
   - 'mocha'
@@ -234,13 +240,27 @@ module.exports =
   ]
 ```
 
+You can specify a task description - example JavaScript file `grunt/aliases.js`
+```javascript
+module.exports = {
+  'lint': {
+    description: 'Lint css and js',
+    tasks: [
+      'jshint',
+      'csslint'
+    ]
+  }
+};
+```
+
 ### Custom Config
 
 There are certain scenarios where you might have a base config for your team, and you want to be able to override some of the config based on your personal setup.  You can do that with the `overridePath` property.  In this case, the library will merge the two, with the override path taking priority.  For example:
 
 ```javascript
 module.exports = function(grunt) {
-
+  var path = require('path');
+  
   require('load-grunt-config')(grunt, {
     configPath: path.join(process.cwd(), 'vendor'),
     overridePath: path.join(process.cwd(), 'config-'+process.env.USER)
@@ -253,7 +273,8 @@ module.exports = function(grunt) {
 
 ```javascript
 module.exports = function(grunt) {
-
+  var path = require('path');
+  
   require('load-grunt-config')(grunt, {
     configPath: [
       path.join(process.cwd(), 'vendor'),

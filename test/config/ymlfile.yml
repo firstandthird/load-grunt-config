@@ -1,3 +1,4 @@
 ymlFile:
   options:
     filename: read.yml
+    regexp: !!js/regexp /(\d{1,})\%/

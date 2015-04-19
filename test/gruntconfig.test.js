@@ -229,10 +229,9 @@ suite('gruntConfig', function() {
       configPath: [
         __dirname + '/config'
       ]
-    }
-    
+    };
     gruntConfig(grunt, options);
     assert.equal(spy.callCount, 8);
-  });  
+  });
 
 });

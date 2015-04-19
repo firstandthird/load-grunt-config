@@ -22,8 +22,8 @@ suite('readConfigDir', function() {
     var spy = sinon.spy();
     var options = {
       mergeFunction: spy
-    }
-    
+    };
+
     readConfigDir(__dirname+'/config', grunt, options);
     assert.equal(spy.callCount, 7);
   });

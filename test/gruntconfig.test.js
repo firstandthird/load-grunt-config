@@ -231,7 +231,7 @@ suite('gruntConfig', function() {
       ]
     };
     gruntConfig(grunt, options);
-    assert.equal(spy.callCount, 8);
+    assert.equal(spy.callCount, 9);
   });
 
 });

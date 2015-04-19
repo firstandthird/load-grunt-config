@@ -1,7 +1,8 @@
 {
   "jsonFile": {
     "options": {
-      "filename": "read.json"
+      "filename": "read.json",
+      "regexp": "/(\\d{1,})\\%/"
     }
   }
 }

@@ -1,4 +1,12 @@
 
+0.17.1 / 2015-04-19
+==================
+
+  * Revert "load js-yaml full schema support to allow regexp"
+  * Use lodash instead of lodash-node to speed up execution
+  * Speed up build time when there are no yaml files
+
+
 0.17.0 / 2015-04-12
 ==================
 

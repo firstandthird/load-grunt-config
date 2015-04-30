@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "async": "~0.2.10",
-    "cson": "~1.6.2",
+    "cson": "~3.0.1",
     "glob": "~3.2.6",
     "jit-grunt": "~0.8.0",
     "js-yaml": "~3.0.1",

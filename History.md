@@ -1,3 +1,9 @@
+0.17.2 / 2015-07-02
+==================
+
+  * Removed unnecessary loop to find fullpaths (jigardafda)
+  * Updated cson and jit-grunt dependencies
+
 
 0.17.1 / 2015-04-19
 ==================

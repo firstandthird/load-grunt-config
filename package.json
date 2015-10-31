@@ -34,7 +34,6 @@
     "proxyquire": "^1.7.3"
   },
   "dependencies": {
-    "async": "~0.2.10",
     "cson": "~3.0.1",
     "glob": "~3.2.6",
     "jit-grunt": "~0.9.1",

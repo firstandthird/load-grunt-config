@@ -1,7 +1,28 @@
+0.19.0 / 2015-11-01
+==================
+
+  * Removed unused async dependency
+  * Updated dependencies:
+    * cson from ~3.0.1 to ~3.0.2
+    * glob from ~3.2.6 to ~5.0.15
+    * js-yaml from ~3.0.1 to ~3.4.3
+    * lodash from ~2.4.1 to ~3.10.1
+  * Updated devDependencies:
+    * grunt-contrib-jshint from ~0.8.0 to ~0.11.3
+    * grunt-contrib-watch from ~0.5.3 to ~0.6.1
+    * grunt from ~0.4.2 to ~0.4.5
+    * grunt-notify from ~0.2.13 to ~0.4.1
+    * grunt-gh-pages from ~0.9.0 to ~1.0.0
+    * sinon from ^1.9.0 to ~1.17.2
+    * proxyquire from ^0.5.3 to ~1.7.3
+  * Renamed History.md to CHANGELOG.md
+
+
 0.18.0 / 2015-10-31
 ==================
 
   * Updated load-grunt-tasks dependency from ~0.3.0 to ~3.3.0
+
 
 0.17.2 / 2015-07-02
 ==================

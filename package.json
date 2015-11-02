@@ -22,6 +22,10 @@
   "bugs": {
     "url": "https://github.com/firstandthird/load-grunt-config/issues"
   },
+  "files": [
+    "lib",
+    "index.js"
+  ],
   "devDependencies": {
     "grunt-simple-mocha": "~0.4.0",
     "grunt-contrib-jshint": "~0.11.3",

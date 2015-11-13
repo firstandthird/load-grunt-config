@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 var cwd = process.cwd();
 var defaults = {
-  configPath: path.join(cwd, 'grunt'),
+  configPath: [ path.join(cwd, 'grunt') ],
   init: true,
   jitGrunt: false,
   loadGruntTasks: {

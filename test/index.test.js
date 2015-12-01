@@ -63,6 +63,26 @@ suite('index', function() {
       assert.equal(options.configPath, path.join(process.cwd(), 'grunt'));
     });
 
+    test('should accept configPath property as string', function() {
+      var configPath = 'config/path';
+      loadGruntConfig(grunt, {
+        configPath: configPath
+      });
+      var args = gruntConfigSpy.args[0];
+      var options = args[1];
+      assert.deepEqual(options.configPath, configPath);
+    });
+
+    test('should accept configPath property as array', function() {
+      var configPath = ['first/config/path', 'second/config/path'];
+      loadGruntConfig(grunt, {
+        configPath: configPath
+      });
+      var args = gruntConfigSpy.args[0];
+      var options = args[1];
+      assert.deepEqual(options.configPath, configPath);
+    });
+
     test('should default to init: true', function() {
       loadGruntConfig(grunt, {});
       var args = gruntConfigSpy.args[0];

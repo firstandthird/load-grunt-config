@@ -1,3 +1,9 @@
+0.19.1 / 2015-12-01
+==================
+
+  * Fixed issue with array in configPath
+  * Ignored unneeded files in npm package
+
 0.19.0 / 2015-11-01
 ==================
 

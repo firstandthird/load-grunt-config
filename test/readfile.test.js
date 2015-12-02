@@ -14,11 +14,13 @@ suite('readfile', function() {
   test('read yaml file', function() {
     var yaml = readfile(__dirname+'/config/yamlfile.yaml');
     assert.equal(yaml.yamlFile.options.filename, 'read.yaml');
+    assert.equal(yaml.yamlFile.options.regexp, '/(\\d{1,})\\%/');
   });
 
   test('read yml file', function() {
     var yaml = readfile(__dirname+'/config/ymlfile.yml');
     assert.equal(yaml.ymlFile.options.filename, 'read.yml');
+    assert.equal(yaml.ymlFile.options.regexp, '/(\\d{1,})\\%/');
   });
 
   test('read cson file', function() {
@@ -29,6 +31,7 @@ suite('readfile', function() {
   test('read json file', function() {
     var json = readfile(__dirname+'/config/jsonfile.json');
     assert.equal(json.jsonFile.options.filename, 'read.json');
+    assert.equal(json.jsonFile.options.regexp, '/(\\d{1,})\\%/');
   });
 
   test('read js object file', function() {

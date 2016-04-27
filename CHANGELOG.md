@@ -1,3 +1,12 @@
+(not released yet)
+==================
+
+  * Updated devDependencies:
+    * grunt-contrib-jshint from ~0.11.3 to ~1.0.0
+    * grunt-contrib-watch from ~0.6.1 to ~1.0.0
+    * grunt from ~0.4.5 to ~1.0.1
+    * grunt-gh-pages from ~1.0.0 to ~1.1.0
+
 0.19.2 / 2016-04-27
 ==================
 

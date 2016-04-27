@@ -33,7 +33,6 @@
     "grunt": "~1.0.1",
     "grunt-notify": "~0.4.1",
     "grunt-gh-pages": "~1.1.0",
-    "grunt-ghpage": "~0.2.0",
     "sinon": "~1.17.2",
     "proxyquire": "~1.7.3"
   },

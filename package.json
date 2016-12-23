@@ -28,20 +28,20 @@
   ],
   "devDependencies": {
     "grunt-simple-mocha": "~0.4.0",
-    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-watch": "~1.0.0",
     "grunt": "~1.0.1",
     "grunt-notify": "~0.4.1",
-    "grunt-gh-pages": "~1.1.0",
+    "grunt-gh-pages": "~2.0.0",
     "sinon": "~1.17.2",
     "proxyquire": "~1.7.3"
   },
   "dependencies": {
-    "cson": "~3.0.2",
-    "glob": "~5.0.15",
+    "cson": "~4.0.0",
+    "glob": "~7.1.1",
     "jit-grunt": "~0.10.0",
-    "js-yaml": "~3.4.3",
-    "load-grunt-tasks": "~3.3.0",
-    "lodash": "~3.10.1"
+    "js-yaml": "~3.7.0",
+    "load-grunt-tasks": "~3.5.2",
+    "lodash": "~4.17.2"
   }
 }

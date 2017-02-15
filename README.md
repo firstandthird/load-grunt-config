@@ -1,6 +1,6 @@
 #load-grunt-config [![Build Status](https://travis-ci.org/firstandthird/load-grunt-config.svg?branch=master)](https://travis-ci.org/firstandthird/load-grunt-config)
 
-load-grunt-config is a Grunt library that allows you to break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect. But as a project grows, the Gruntfile.js can quickly become unmanagable; this is where load-grunt-config comes in handy.  It was heavily inspired by [Thomas Boyt's "More Maintainable Gruntfiles"](http://www.thomasboyt.com/2013/09/01/maintainable-grunt.html).
+load-grunt-config is a Grunt library that allows you to break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect. But as a project grows, the Gruntfile.js can quickly become unmanagable; this is where load-grunt-config comes in handy.  It was heavily inspired by [Thomas Boyt's "More Maintainable Gruntfiles"](http://thomasboyt.github.io/2013/09/01/maintainable-grunt.html).
 
 ##Features
 

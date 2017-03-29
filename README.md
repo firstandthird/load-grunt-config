@@ -1,8 +1,8 @@
-#load-grunt-config [![Build Status](https://travis-ci.org/firstandthird/load-grunt-config.svg?branch=master)](https://travis-ci.org/firstandthird/load-grunt-config)
+# load-grunt-config [![Build Status](https://travis-ci.org/firstandthird/load-grunt-config.svg?branch=master)](https://travis-ci.org/firstandthird/load-grunt-config)
 
 load-grunt-config is a Grunt library that allows you to break up your Gruntfile config by task.  For most small projects a single Gruntfile.js is perfect. But as a project grows, the Gruntfile.js can quickly become unmanagable; this is where load-grunt-config comes in handy.  It was heavily inspired by [Thomas Boyt's "More Maintainable Gruntfiles"](http://thomasboyt.github.io/2013/09/01/maintainable-grunt.html).
 
-##Features
+## Features
 
 - Each task has its own config file. Example: jshint.js, mocha.js, etc.
 - Auto load all grunt plugins.  Uses [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks). (Optionally it can use [jit-grunt](https://github.com/shootaroo/jit-grunt))
@@ -15,13 +15,13 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - [Config overrides](#custom-config)
 - [Config grouping](#config-grouping)
 
-##Installation
+## Installation
 
 ```bash
 npm install -D load-grunt-config
 ```
 
-##Example
+## Example
 
 Basic Gruntfile.js
 ```javascript
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 
 Note: if you have problems with auto loading of some tasks please check [jit-grunt#static-mappings](https://github.com/shootaroo/jit-grunt#static-mappings)
 
-###Grunt tasks files
+### Grunt tasks files
 
 Here's what the files in your `grunt/` folder could look like.  You can use either .js, .json, .yaml, .cson, or .coffee - whatever you prefer and you can mix and match as you see fit.
 
@@ -150,7 +150,7 @@ module.exports =
     bare: true
 ```
 
-###Aliases
+### Aliases
 
 If your `grunt/` folder contains an `aliases.(js|.json|yaml|cson|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 

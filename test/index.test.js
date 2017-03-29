@@ -163,6 +163,15 @@ suite('index', function() {
       assert.equal(typeof args[1], 'object');
     });
 
+    test('should not merge data into config if preMerge is false', function() {
+      config = loadGruntConfig(grunt, {
+        data: {dontMergeThis: true},
+        preMerge: false
+      });
+
+      assert(config['dontMergeThis'] !== true);
+    });
+
   });
 
   suite('grunt.initConfig', function() {

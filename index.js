@@ -22,7 +22,7 @@ module.exports = function(grunt, options) {
     options.data = options.config;
     delete options.config;
   }
-  var opts = _.merge({}, defaults, options, options.data);
+  var opts = _.mergeWith({}, defaults, options);
 
   var packageJsonPath = path.join(cwd, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
@@ -36,7 +36,7 @@ module.exports = function(grunt, options) {
     options.preMerge(config, opts.data);
   }
 
-  config = _.merge({}, config, opts.data);
+  config = _.mergeWith({}, config, opts.data);
 
   if (typeof options.postProcess === 'function') {
     options.postProcess(config);

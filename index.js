@@ -6,6 +6,7 @@ var _ = require('lodash');
 var cwd = process.cwd();
 var defaults = {
   configPath: [ path.join(cwd, 'grunt') ],
+  packageJsonPath: path.join(cwd, 'package.json'),
   init: true,
   jitGrunt: false,
   loadGruntTasks: {
@@ -24,9 +25,8 @@ module.exports = function(grunt, options) {
   }
   var opts = _.mergeWith({}, defaults, options);
 
-  var packageJsonPath = path.join(cwd, 'package.json');
-  if (fs.existsSync(packageJsonPath)) {
-    var packageData = require(packageJsonPath);
+  if (fs.existsSync(opts.packageJsonPath)) {
+    var packageData = require(opts.packageJsonPath);
     opts.data.package = packageData;
   }
 

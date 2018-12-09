@@ -40,6 +40,9 @@ module.exports = function(grunt) {
 	require('load-grunt-config')(grunt, {
 		// path to task.js files, defaults to grunt dir
 		configPath: path.join(process.cwd(), 'grunt'),
+		
+		// path to project package.json file
+		packageJsonPath: path.join(process.cwd(), 'package.json'),
 
 		// auto grunt.initConfig
 		init: true,
@@ -50,7 +53,7 @@ module.exports = function(grunt) {
 		},
 
 		// use different function to merge config files
-		mergeFunction: require('recursive-merge')
+		mergeFunction: require('recursive-merge'),
 
 		// can optionally pass options to load-grunt-tasks.
 		// If you set to false, it will disable auto loading tasks.

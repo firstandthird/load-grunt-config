@@ -1,3 +1,10 @@
+1.0.2 / not released yet
+==================
+
+  * Updated dependencies:
+    * glob from ~7.1.1 to ~7.1.3
+    * js-yaml from ~3.7.0 to ~3.12.0
+
 1.0.1 / 2018-12-09
 ==================
 

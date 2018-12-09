@@ -1,11 +1,18 @@
-(not released yet)
+1.0.0 /2018-12-09
 ==================
 
+  * Dropped support of node lower than 4
+  * Updated dependencies:
+    * cson from ~3.0.2 to ~4.0.0
+    * glob from ~5.0.15 to ~7.1.1
+    * load-grunt-tasks from ~3.3.0 to ~3.5.2
+    * js-yaml from ~3.4.3 to ~3.7.0
+    * lodash from ~3.10.1 to ~4.17.11
   * Updated devDependencies:
-    * grunt-contrib-jshint from ~0.11.3 to ~1.0.0
-    * grunt-contrib-watch from ~0.6.1 to ~1.0.0
+    * grunt-contrib-jshint from ~0.11.3 to ~1.1.0
+    * grunt-contrib-watch from ~0.6.1 to ~1.1.0
     * grunt from ~0.4.5 to ~1.0.1
-    * grunt-gh-pages from ~1.0.0 to ~1.1.0
+    * grunt-gh-pages from ~1.0.0 to ~3.1.0
 
 0.19.2 / 2016-04-27
 ==================

@@ -1,4 +1,9 @@
-1.0.0 /2018-12-09
+1.0.1 / 2018-12-09
+==================
+
+  * Added ability to customize package.json file location
+
+1.0.0 / 2018-12-09
 ==================
 
   * Dropped support of node lower than 4

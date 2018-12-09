@@ -66,7 +66,7 @@ suite('gruntConfig', function() {
 
     var config = gruntConfig(grunt, options);
 
-    var expectedClone = _.clone(expected, true);
+    var expectedClone = _.cloneDeep(expected);
     expectedClone.jsobj.jsobjFile.options.filename = 'override';
     assert.deepEqual(config, expectedClone);
   });
@@ -115,7 +115,7 @@ suite('gruntConfig', function() {
 
     var config = gruntConfig(grunt, options);
 
-    var expectedClone = _.clone(expected, true);
+    var expectedClone = _.cloneDeep(expected);
     expectedClone.jsobj.jsobjFile.options.filename = 'override';
     assert.deepEqual(config, expectedClone);
   });
@@ -150,7 +150,7 @@ suite('gruntConfig', function() {
 
     var config = gruntConfig(grunt, options);
 
-    var expectedClone = _.clone(expected, true);
+    var expectedClone = _.cloneDeep(expected);
     expectedClone.jsobj.jsobjFile.options.filename = 'override';
     assert.deepEqual(config, expectedClone);
   });
@@ -171,7 +171,7 @@ suite('gruntConfig', function() {
 
     var config = gruntConfig(grunt, options);
 
-    var expectedClone = _.clone(expected, true);
+    var expectedClone = _.cloneDeep(expected);
     expectedClone.jsobj.jsobjFile.options.filename = 'another-override';
     assert.deepEqual(config, expectedClone);
   });
@@ -192,7 +192,7 @@ suite('gruntConfig', function() {
 
     var config = gruntConfig(grunt, options);
 
-    var expectedClone = _.clone(expected, true);
+    var expectedClone = _.cloneDeep(expected);
     expectedClone.jsobj.jsobjFile.options.filename = 'another-override';
     assert.deepEqual(config, expectedClone);
   });
@@ -216,7 +216,7 @@ suite('gruntConfig', function() {
 
     var config = gruntConfig(grunt, options);
 
-    var expectedClone = _.clone(expected, true);
+    var expectedClone = _.cloneDeep(expected);
     expectedClone.jsobj.jsobjFile.options.filename = 'override';
     assert.deepEqual(config, expectedClone);
   });

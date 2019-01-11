@@ -157,7 +157,7 @@ module.exports =
 
 If your `grunt/` folder contains an `aliases.(js|.json|yaml|cson|coffee)` file, `load-grunt-config` will use that to define your tasks aliases (like `grunt.registerTask('default', ['jshint']);`).
 
-The following examples show the same `aliasses` definition written in various formats
+The following examples show the same `aliases` definition written in various formats
 
 Example yaml file - `grunt/aliases.yaml`
 ```yaml

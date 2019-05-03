@@ -1,9 +1,14 @@
-1.0.3 / not released yet
+2.0.0 / not released yet
 ==================
 
+  * Dropped support of node lower than 6
   * Added package-lock.json
   * Updated dependencies:
-    * js-yaml from ~3.12.0 to ~3.13.1
+    * js-yaml from ~3.12.0 to 3.13.1
+    * cson from ~4.0.0 to 5.1.0
+    * load-grunt-tasks from ~3.5.2 to 4.0.0
+  * Switched to strict dependencies versions
+  * Updated devDependencies
 
 1.0.2 / 2019-05-03
 ==================

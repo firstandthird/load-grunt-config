@@ -1,3 +1,10 @@
+1.0.3 / not released yet
+==================
+
+  * Added package-lock.json
+  * Updated dependencies:
+    * js-yaml from ~3.12.0 to ~3.13.1
+
 1.0.2 / 2019-05-03
 ==================
 

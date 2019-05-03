@@ -1,4 +1,4 @@
-1.0.2 / not released yet
+1.0.2 / 2019-05-03
 ==================
 
   * Updated dependencies:

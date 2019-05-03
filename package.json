@@ -1,6 +1,6 @@
 {
   "name": "load-grunt-config",
-  "version": "2.0.0",
+  "version": "2.0.0-rc1",
   "description": "Grunt plugin that lets you break up your Gruntfile config by task",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "grunt-notify": "0.4.5",
     "grunt-simple-mocha": "0.4.1",
     "proxyquire": "2.1.0",
-    "sinon": "1.17.2"
+    "sinon": "7.3.2"
   },
   "dependencies": {
     "cson": "5.1.0",

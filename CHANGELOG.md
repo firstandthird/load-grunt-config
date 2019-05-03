@@ -1,4 +1,4 @@
-2.0.0 / not released yet
+2.0.0 / not released yet (rc1 - 2019-05-03)
 ==================
 
   * Dropped support of node lower than 6

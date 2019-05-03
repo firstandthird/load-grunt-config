@@ -47,9 +47,9 @@ suite('index', function() {
     loadGruntConfig = original;
     grunt.initConfig.reset();
     grunt.registerTask.reset();
-    gruntConfigSpy.reset();
-    loadGruntTasksSpy.reset();
-    jitGruntSpy.reset();
+    gruntConfigSpy.resetHistory();
+    loadGruntTasksSpy.resetHistory();
+    jitGruntSpy.resetHistory();
     done();
   });
 

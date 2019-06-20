@@ -1,3 +1,11 @@
+3.0.0 / not released yet (rc1 released 2019-06-20)
+==================
+
+  * Dropped support of node lower than 8
+  * Added yarn.lock
+  * Updated dependencies:
+    * load-grunt-tasks from 4.0.0 to 5.0.0
+
 2.0.0 / 2019-06-20
 ==================
 
@@ -7,7 +15,7 @@
     * js-yaml from ~3.12.0 to 3.13.1
     * cson from ~4.0.0 to 5.1.0
     * load-grunt-tasks from ~3.5.2 to 4.0.0
-    * glob from ~7.1.3 to ~7.1.4
+    * glob from ~7.1.3 to 7.1.4
   * Switched to strict dependencies versions
   * Updated devDependencies
 

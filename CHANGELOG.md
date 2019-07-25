@@ -1,3 +1,10 @@
+2.0.1 / 2019-07-25
+==================
+
+  * Updated dependencies:
+    * lodash from 4.7.11 to 4.7.15
+  * Updated devDependencies
+
 2.0.0 / 2019-06-20
 ==================
 

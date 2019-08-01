@@ -1,10 +1,10 @@
-3.0.0 / not released yet (rc3 released 2019-07-25)
+3.0.0 / 2019-08-01
 ==================
 
   * Dropped support of node lower than 8
   * Added yarn.lock
   * Updated dependencies:
-    * load-grunt-tasks from 4.0.0 to 5.0.0
+    * load-grunt-tasks from 4.0.0 to 5.1.0
     * lodash from 4.7.11 to 4.7.15
   * Updated devDependencies
 

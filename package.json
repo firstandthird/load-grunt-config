@@ -45,6 +45,6 @@
     "jit-grunt": "0.10.0",
     "js-yaml": "3.13.1",
     "load-grunt-tasks": "5.1.0",
-    "lodash": "4.17.15"
+    "lodash": "^4.17.19"
   }
 }

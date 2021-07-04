@@ -1,3 +1,8 @@
+3.0.2 / 2021-07-04
+==================
+  * Updated dependencies:
+    * lodash from 4.17.15 to 4.7.21
+
 3.0.1 / 2019-09-10
 ==================
   * Allowed relative path for JS loading
@@ -9,7 +14,7 @@
   * Added yarn.lock
   * Updated dependencies:
     * load-grunt-tasks from 4.0.0 to 5.1.0
-    * lodash from 4.7.11 to 4.7.15
+    * lodash from 4.17.11 to 4.17.15
   * Updated devDependencies
 
 2.0.1 / 2019-07-25

@@ -25,7 +25,7 @@ suite('readConfigDir', function() {
     };
 
     readConfigDir(__dirname+'/config', grunt, options);
-    assert.equal(spy.callCount, 8);
+    assert.equal(spy.callCount, 7);
   });
 
   test('multiconfig', function() {

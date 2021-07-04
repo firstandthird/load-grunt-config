@@ -1,3 +1,23 @@
+4.0.0 / 2021-07-04
+==================
+  * Dropped support of CoffeeScript **(breaking change)**
+  * Removed package-lock.json
+  * Updated dependencies:
+    * js-yaml from 3.13.1 to 4.1.0
+    * cson from 5.1.0 to 7.20.0  
+    * glob 7.1.4 to 7.1.7
+  * Added dependencies:
+    * js-yaml-js-types version 1.0.0
+  * Updated devDependencies:
+    * grunt from 1.0.4 to 1.4.1
+    * proxyquire from 2.1.1 to 2.1.3
+    * grunt-gh-pages from 3.1.0 to 4.0.0
+    * sinon from 7.3.2 to 11.1.1
+  * Added devDependencies:
+    * grunt-mocha-cli 7.0.0
+  * Removed devDependencies:
+    * grunt-simple-mocha
+
 3.0.2 / 2021-07-04
 ==================
   * Updated dependencies:

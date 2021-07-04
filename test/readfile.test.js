@@ -48,17 +48,6 @@ suite('readfile', function() {
     assert.equal(obj.jsFunFile.options.test, 1);
   });
 
-  test('read coffee file', function() {
-    var json = readfile(__dirname+'/config/coffeefile.coffee');
-    assert.equal(json.coffeeFile.options.filename, 'read.coffee');
-  });
-
-  test('read missing coffee file', function() {
-    assert.throws(function() {
-      readfile(__dirname+'/config/coffeefile2.coffee');
-    });
-  });
-
   test('read unsupported file', function() {
     assert.throws(function() {
       readfile(__dirname+'/config/htmlfile.html');

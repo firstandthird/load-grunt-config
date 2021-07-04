@@ -1,5 +1,5 @@
 test:
-  - simplemocha
+  - mochacli
 default:
   - jshint
   - test

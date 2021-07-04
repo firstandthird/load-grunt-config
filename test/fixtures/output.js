@@ -11,13 +11,6 @@ module.exports = {
       ]
     }
   },
-  coffeefile: {
-    coffeeFile: {
-      options: {
-        filename: 'read.coffee'
-      }
-    }
-  },
   jsfun: {
     jsFunFile: {
       options: {

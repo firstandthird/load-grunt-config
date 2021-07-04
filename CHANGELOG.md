@@ -1,3 +1,9 @@
+5.0.0 / not released yet
+==================
+  * Dropped support of node lower than 10
+  * Updated dependencies:
+    * grunt-contrib-jshint from 2.1.0 to 3.0.0
+
 4.0.0 / 2021-07-04
 ==================
   * Dropped support of CoffeeScript **(breaking change)**

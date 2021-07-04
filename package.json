@@ -27,11 +27,11 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "devDependencies": {
     "grunt": "1.4.1",
-    "grunt-contrib-jshint": "2.1.0",
+    "grunt-contrib-jshint": "3.0.0",
     "grunt-contrib-watch": "1.1.0",
     "grunt-gh-pages": "4.0.0",
     "grunt-mocha-cli": "7.0.0",

@@ -1,3 +1,7 @@
+4.0.1 / 2021-08-20
+==================
+  * Debug version to investigate issue with `js-yaml` & `js-yaml-js-types`
+
 4.0.0 / 2021-07-04
 ==================
   * Dropped support of CoffeeScript **(breaking change)**

@@ -27,6 +27,22 @@ module.exports = {
       }
     }
   },
+  cjsfun: {
+    cjsFunFile: {
+      options: {
+        filename: 'cjsfun.cjs',
+        test: 1
+      }
+    }
+  },
+  cjsobj: {
+    cjsobjFile: {
+      options: {
+        filename: 'cjsobj.cjs',
+        debug: true
+      }
+    }
+  },
   jsonfile: {
     jsonFile: {
       options: {
@@ -41,7 +57,7 @@ module.exports = {
         filename: 'read.cson'
       }
     }
-  },  
+  },
   yamlfile: {
     yamlFile: {
       options: {

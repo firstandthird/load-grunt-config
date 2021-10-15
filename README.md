@@ -10,7 +10,7 @@ load-grunt-config is a Grunt library that allows you to break up your Gruntfile 
 - Support for YAML files.
 - Support for CSON files.
 - Support for returning a function.
-- [Easily register task aliases](#aliases) with `aliases.(js|json|yaml)`.
+- [Easily register task aliases](#aliases) with `aliases.(js|cjs|json|yaml)`.
 - [Config overrides](#custom-config)
 - [Config grouping](#config-grouping)
 

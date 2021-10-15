@@ -48,6 +48,20 @@ suite('readfile', function() {
     assert.equal(obj.jsFunFile.options.test, 1);
   });
 
+  test('read cjs object file', function() {
+    var json = readfile(__dirname+'/config/cjsobj.cjs');
+    assert.equal(json.cjsobjFile.options.filename, 'cjsobj.cjs');
+  });
+
+  test('read cjs file with function, returns function', function() {
+    var fn = readfile(__dirname+'/config/cjsfun.cjs');
+    assert.equal(typeof fn, 'function');
+    //fn takes two args, grunt and options
+    var obj = fn({}, { test: 1 });
+    assert.equal(obj.cjsFunFile.options.filename, 'cjsfun.cjs');
+    assert.equal(obj.cjsFunFile.options.test, 1);
+  });
+
   test('read unsupported file', function() {
     assert.throws(function() {
       readfile(__dirname+'/config/htmlfile.html');
